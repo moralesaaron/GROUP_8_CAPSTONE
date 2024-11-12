@@ -1,0 +1,25 @@
+cd c://xampp/htdocs
+git clone (link)
+cd (BSIS_WEBD_24)
+      Folder name
+code .
+
+		BRANCH (main/master)
+git -m branch
+   or	
+git checkout (Branch Name)
+	- switch to other branch
+git checkout -b	(branch name)
+	- add branch	
+git commit -m "added ..."
+git push
+git push --setup...
+
+
+git config --global user.name
+git config --global user.name "(username)"
+
+git config --global user.email
+git config --global user.eamit "(email)"
+
+

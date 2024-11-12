@@ -1,0 +1,8 @@
+how to merge
+
+change branch
+git merge morales
+
+git add .
+git commit -m ""
+git push

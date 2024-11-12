@@ -1,0 +1,25 @@
+ROUTING
+             (app.php)    (class)
+		↓            ↓ 
+	URL > ROUTING > CONTROLLER
+        ↓        ↓         ↓ 
+      ___.com/   home    / index  /  ...  
+                 ↓          ↓         ↓   
+              controller  method  parameters
+
+URL PARSING	
+ ► (explode)
+
+CONTROLLER DISPATCHING
+ ► show
+
+ucfirst
+ ► automatic capital first letter
+
+unset
+ ► destroy / sessions
+
+
+development of a web based computer inventory management in bpc
+
+
