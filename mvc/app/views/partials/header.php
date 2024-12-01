@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>comLAB</title>
+  <title>DormLynk</title>
 
   <link rel="stylesheet" href="<?= ROOT ?>/assets/bootstrap/css/bootstrap.min.css">
 
@@ -14,7 +14,7 @@
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
-      <a class="navbar-brand" href="<?= ROOT ?>/home">comLAB</a>
+      <a class="navbar-brand" href="<?= ROOT ?>/home">DormLynk</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/home">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/comas">COMPUTER LAB A</a>
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/about">About</a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/home">CL2</a>
@@ -36,6 +36,10 @@
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/home">CL3</a>
             </li> -->
             
+
+        
+      </div>
+    </> 
 
             
             <?php if (!empty($_SESSION['USER'])): ?>
@@ -52,7 +56,7 @@
         </ul>
 
         <?php if (empty($_SESSION['USER'])): ?>
-
+            
           <a href="<?= ROOT ?>/login" class="btn btn-secondary">Login</a>
 
         <?php else: ?>

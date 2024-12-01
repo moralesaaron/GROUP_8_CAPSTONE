@@ -2,7 +2,7 @@
 
 define('APP_NAME', 'DormLynk');
 
-define('ROOT', 'http://localhost/group_8_capstone/mvc/public');
+define('ROOT', value: 'http://localhost/group_8_capstone/mvc/public');
 
 
 
