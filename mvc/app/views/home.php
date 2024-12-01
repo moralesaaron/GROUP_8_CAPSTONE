@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= APP_NAME ?></title>
-</head>
-<body>
-    <h1>Home Page xdd</h1>
-</body>
-</html>
+<?php include "partials/header.php" ?>
+
+<!-- <div class="container mt-5">
+  <h2 class="home-title">Home Page</h2>
+  <a href="<?= ROOT ?>/reports/create" class="btn btn-primary">File a Report</a>
+</div>
+
+
+
+<?php include "partials/footer.php" ?> -->
