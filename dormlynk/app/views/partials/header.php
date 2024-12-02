@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DormLynk</title>
+  <title>comLAB</title>
 
   <link rel="stylesheet" href="<?= ROOT ?>/assets/bootstrap/css/bootstrap.min.css">
 
@@ -14,6 +14,7 @@
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
+      <img src="assets/images/monitor.png" alt="" href="<?= ROOT ?>/home">
       <a class="navbar-brand" href="<?= ROOT ?>/home">DormLynk</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,37 +28,37 @@
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/home">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/browse">Browse</a>
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/comas">CL-A</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/about">About</a>
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/combs">CL-B</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/comcs">CL-C</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/comds">CL-D</a>
             </li>
             
-            <!-- <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/home">CL3</a>
-            </li> -->
-            
-
-        
-      </div>
-    </> 
 
             
             <?php if (!empty($_SESSION['USER'])): ?>
             <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/reports">Reports</a>
+            </li>
+            
+            <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/users">Users</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/reports">Reports</a>
-            </li>
+            
             <?php endif; ?>
           
 
         </ul>
 
         <?php if (empty($_SESSION['USER'])): ?>
-            
+
           <a href="<?= ROOT ?>/login" class="btn btn-secondary">Login</a>
 
         <?php else: ?>
