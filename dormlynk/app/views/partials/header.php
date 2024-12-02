@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar sticky-top navbar-expand-lg bg-light">
     <div class="container">
       <img src="assets/images/monitor.png" alt="" href="<?= ROOT ?>/home">
       <a class="navbar-brand" href="<?= ROOT ?>/home">DormLynk</a>
@@ -28,6 +28,12 @@
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/home">Home</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/browse">Browse</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/about">About</a>
+            </li>
+            <!-- <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/comas">CL-A</a>
             </li>
             <li class="nav-item">
@@ -38,7 +44,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/comds">CL-D</a>
-            </li>
+            </li> -->
             
 
             
