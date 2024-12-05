@@ -12,9 +12,9 @@
 </head>
 
 <body>
-  <nav class="navbar sticky-top navbar-expand-lg bg-light">
+  <nav class="navbar sticky-top navbar-expand-lg bg-warning">
     <div class="container">
-      <img src="assets/images/monitor.png" alt="" href="<?= ROOT ?>/home">
+      <img src="assets/images/home.png" alt="" href="<?= ROOT ?>/home">
       <a class="navbar-brand" href="<?= ROOT ?>/home">DormLynk</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,14 +49,17 @@
 
             
             <?php if (!empty($_SESSION['USER'])): ?>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/reports">Reports</a>
             </li>
             
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/users">Users</a>
-            </li>
+            </li> -->
 
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/profile">My Profile</a>
+            </li>
             
             <?php endif; ?>
           
