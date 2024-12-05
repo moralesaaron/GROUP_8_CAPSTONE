@@ -19,7 +19,7 @@ class Users extends Controller
   public function create()
   {
     if (!Auth::logged_in()) {
-      redirect('login');
+      // redirect('login');
     }
 
     $errors = [];

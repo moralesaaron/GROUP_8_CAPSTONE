@@ -3,7 +3,7 @@
 <div class="container">
 
     <form action="" method="POST" enctype="multipart/form-data" class="mt-5 w-50 mx-auto">
-        <h2>Create User</h2>
+        <h2>Register Account</h2>
 
         <?php if (!empty($errors)): ?>
 

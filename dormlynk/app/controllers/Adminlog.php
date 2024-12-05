@@ -19,7 +19,7 @@ class Adminlog extends Controller
 
           Auth::authenticate($row);
 
-          redirect('browse');
+          redirect('admindash');
         } else {
           $errors['errors'] = 'Email or Password is invalid';
         }
@@ -29,7 +29,7 @@ class Adminlog extends Controller
     }
 
 
-    $this->view('login', [
+    $this->view('adminlog', [
       'errors' => $errors
     ]);
   }

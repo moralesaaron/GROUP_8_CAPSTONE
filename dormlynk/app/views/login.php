@@ -26,6 +26,9 @@
       <input type="password" name="password" class="form-control">
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
+          <br><br>
+          No account yet? <a href="<?= ROOT ?>/users/create" class="btn btn-dark">Register Here</a>
+
   </form>
 </div>
 
