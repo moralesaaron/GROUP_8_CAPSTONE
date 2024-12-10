@@ -21,7 +21,7 @@
         <input type="hidden" name="token">
 
         <div class="mb-2">
-            <label for="">Image</label>
+            <label for="">Select Profile Image</label>
             <input type="file" name="image" class="form-control">
         </div>
 
@@ -40,9 +40,54 @@
             <input name="firstname" value="<?= get_var('firstname') ?>" type="text" class="form-control">
         </div>
         <div class="mb-2">
+            <label for="">Middle Name</label>
+            <input name="middlename" value="<?= get_var('middlename') ?>" type="text" class="form-control">
+        </div>
+        <div class="mb-2">
             <label for="">Last Name</label>
             <input name="lastname" value="<?= get_var('lastname') ?>" type="text" class="form-control">
         </div>
+        <div class="mb-2">
+            <label for="">Home Address</label>
+            <input name="address" value="<?= get_var('address') ?>" type="text" class="form-control">
+        </div>
+        <div class="mb-2">
+            <label for="">Contact Number</label>
+            <input name="contact" value="<?= get_var('contact') ?>" type="text" class="form-control">
+        </div>
+        
+        <div class="mb-2">
+            <label for="">Gender</label>
+            <select name="gender" class="form-control">
+                <option value="">Select a Gender</option>
+                <option <?= get_select('role', 'Male') ?> value="Male">Male</option>
+                <option <?= get_select('role', 'Female') ?> value="Female">Female</option>
+                <option <?= get_select('role', 'Other') ?> value="Other">Other</option>
+                <option <?= get_select('role', 'Prefer not to say') ?> value="Prefer not to say">Prefer not to say</option>
+            </select>
+        </div>
+
+        <h2>For Emergencies</h2>
+
+        <div class="mb-2">
+            <label for="">Full Name</label>
+            <input name="emfullname" value="<?= get_var('emfullname') ?>" type="text" class="form-control">
+        </div>
+        <div class="mb-2">
+            <label for="">Contact Number</label>
+            <input name="emcontact" value="<?= get_var('emcontact') ?>" type="text" class="form-control">
+        </div>
+        <div class="mb-2">
+            <label for="">Home Address</label>
+            <input name="emaddress" value="<?= get_var('emaddress') ?>" type="text" class="form-control">
+        </div>
+        <div class="mb-2">
+            <label for="">Relation</label>
+            <input name="emrelation" value="<?= get_var('emrelation') ?>" type="text" class="form-control">
+        </div>
+
+
+
         <div class="mb-2">
             <label for="">Email</label>
             <input name="email" value="<?= get_var('email') ?>" type="text" class="form-control">

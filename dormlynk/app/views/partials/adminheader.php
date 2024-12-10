@@ -12,10 +12,10 @@
 </head>
 
 <body>
-  <nav class="navbar sticky-top navbar-expand-lg bg-warning">
+  <nav class="navbar sticky-top navbar-expand-lg bg-primary">
     <div class="container">
-      <img src="assets/images/home.png" alt="" href="<?= ROOT ?>/home">
-      <a class="navbar-brand" href="<?= ROOT ?>/home">DormLynk Admin</a>
+      <img src="assets/images/home.png" alt="" href="<?= ROOT ?>/admindash">
+      <a class="navbar-brand" href="<?= ROOT ?>/admindash">DormLynk Admin</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,7 @@
               <a class="nav-link active" aria-current="page" href="#">Dorms</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Users</a>
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/users">Users</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Payment</a>

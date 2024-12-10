@@ -1,4 +1,4 @@
-<?php include PATH . "partials/header.php" ?>
+<?php include PATH . "partials/adminheader.php" ?>
 
 <div class="container">
 

@@ -6,6 +6,6 @@ define('PATH', 'C:/xampp/htdocs/GROUP_8_CAPSTONE/dormlynk/app/views/');
 
 
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'cl_db');
+define('DB_NAME', 'doli_db');
 define('DB_USER', 'root');
 define('DB_PASS', '');

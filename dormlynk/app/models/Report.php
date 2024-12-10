@@ -16,13 +16,13 @@ class Report extends Model
     //   $this->errors['lastname'] = 'Last name is required';
     // }
 
-    // if (empty($data['email'])) {
+    if (empty($data['email'])) {
 
-    //   $this->errors['email'] = 'Email is required';
-    // } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+      $this->errors['email'] = 'Email is required';
+    } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
 
-    //   $this->errors['email'] = 'Email is not valid';
-    // }
+      $this->errors['email'] = 'Email is not valid';
+    }
 
     // if (empty($data['password'])) {
 
