@@ -12,10 +12,10 @@
 </head>
 
 <body>
-  <nav class="navbar sticky-top navbar-expand-lg bg-warning">
+  <nav class="navbar sticky-top navbar-expand-lg bg-success">
     <div class="container">
-      <img src="assets/images/home.png" alt="" href="<?= ROOT ?>/home">
-      <a class="navbar-brand" href="<?= ROOT ?>/home">DormLynk</a>
+      <img src="assets/images/home.png" alt="" href="<?= ROOT ?>/dormdash">
+      <a class="navbar-brand" href="<?= ROOT ?>/dormdash">DormLynk Manager</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -25,14 +25,23 @@
 
 
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/home">Home</a>
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/dormdash">Dashboard</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Dorms</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/browse">Browse</a>
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/users">Users</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/about">About</a>
+              <a class="nav-link active" aria-current="page" href="#">Payment</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Reports</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Archive</a>
+            </li> -->
             <!-- <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/comas">CL-A</a>
             </li>
@@ -57,9 +66,9 @@
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/users">Users</a>
             </li> -->
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/profile">My Profile</a>
-            </li>
+            </li> -->
             
             <?php endif; ?>
           
