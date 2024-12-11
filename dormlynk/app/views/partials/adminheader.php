@@ -28,7 +28,7 @@
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/admindash">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Dorms</a>
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/dorms">Dorms</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/users">Users</a>

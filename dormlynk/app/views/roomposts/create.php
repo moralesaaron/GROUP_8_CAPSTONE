@@ -69,6 +69,10 @@
             <input name="password" value="<?= get_var('password') ?>" type="password" class="form-control">
         </div> -->
 
+        
+        <!-- <input name="dormname"  value="<?= $_SESSION['DORM']->dormname ?>" type="text" class="form-control"> -->
+        
+
         <div class="mb-2">
             <label for="">Description</label>
             <input name="details" value="<?= get_var('details') ?>" type="text" class="form-control">
@@ -79,7 +83,7 @@
         </div>
         <div class="mb-2">
             <label for="">Cost</label>
-            <input name="cost" value="<?= get_var('cost') ?>" type="text" class="form-control">
+            <input name="cost" value="₱ "<?= get_var('cost') ?>" type="text" class="form-control">
         </div>
         <div class="mb-2">
             <label for="">Status</label>
@@ -91,6 +95,12 @@
                 <option <?= get_select('status', 'Unavailable') ?> value="Unavailable">Unavailable</option>
             </select>
         </div>
+        <div class="mb-2">
+            <!-- Dorm -->
+            
+        </div>
+        <!-- <input  name="date" value="<?=  date("Y.m.d")->dormname  ?>" type="text" class="form-control">
+        </div> -->
 
 
 

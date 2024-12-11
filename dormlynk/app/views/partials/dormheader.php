@@ -15,7 +15,7 @@
   <nav class="navbar sticky-top navbar-expand-lg bg-success">
     <div class="container">
       <img src="assets/images/home.png" alt="" href="<?= ROOT ?>/dormdash">
-      <a class="navbar-brand" href="<?= ROOT ?>/dormdash">DormLynk Manager</a>
+      <a class="navbar-brand " href="<?= ROOT ?>/dormdash">DormLynk Bussiness</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,6 +26,9 @@
 
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/dormdash">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/roomposts">Room</a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Dorms</a>
@@ -75,17 +78,17 @@
 
         </ul>
 
-        <?php if (empty($_SESSION['USER'])): ?>
+        <?php if (empty($_SESSION['DORM'])): ?>
 
           <a href="<?= ROOT ?>/login" class="btn btn-secondary">Login</a>
 
         <?php else: ?>
 
           <span class="me-3">
-            <img class="rounded-circle" width="30px" height="30px" src="<?= ROOT ?>/<?= $_SESSION['USER']->image ?>"
+            <img class="rounded-circle" width="30px" height="30px" src="<?= ROOT ?>/<?= $_SESSION['DORM']->image ?>"
               alt="">
-            <?= $_SESSION['USER']->firstname ?>
-            <?= $_SESSION['USER']->lastname ?>
+            <?= $_SESSION['DORM']->dormname ?>
+            
           </span>
 
           <a href="<?= ROOT ?>/logout" class="btn btn-secondary">Logout</a>

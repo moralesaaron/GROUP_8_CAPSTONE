@@ -18,7 +18,7 @@ class Roomposts extends Controller
 
   public function create()
   {
-    if (!Auth::logged_in()) {
+    if (!Authdorm::logged_in()) {
       redirect('login');
     }
 
@@ -73,7 +73,7 @@ class Roomposts extends Controller
 
   public function edit($id)
   {
-    if (!Auth::logged_in()) {
+    if (!Authdorm::logged_in()) {
       redirect('login');
     }
 
@@ -95,11 +95,11 @@ class Roomposts extends Controller
 
   public function delete($id)
   {
-    if (!Auth::logged_in()) {
+    if (!Authdorm::logged_in()) {
       redirect('login');
     }
 
-    $x = new Coma();
+    $x = new Roompost();
     $arr['id'] = $id;
     $row = $x->first($arr);
 
@@ -111,7 +111,7 @@ class Roomposts extends Controller
     }
 
     $this->view('roomposts/delete', [
-      'coma' => $row
+      'roomposts' => $row
     ]);
   }
 }

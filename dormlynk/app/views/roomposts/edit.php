@@ -3,7 +3,7 @@
 <div class="container">
 
     <form action="" method="POST" class="mt-5 w-50 mx-auto">
-        <h2>Edit PC</h2>
+        <h2>Edit Room</h2>
 
         <!-- <div class="mb-2">
             <label for="">Role</label>
@@ -16,22 +16,47 @@
 
         
         <div class="mb-2">
-            <label for="">PC Number</label>
-            <input name="pcnum" value="<?= $comds->pcnum ?>" type="text" class="form-control">
+            <label for="">Details</label>
+            <input name="details" value="<?= $roomposts->details ?>" type="text" class="form-control">
         </div>
+
+        <div class="mb-2">
+            <label for="">Location</label>
+            <input name="location" value="<?= $roomposts->location ?>" type="text" class="form-control">
+        </div>
+
+        <div class="mb-2">
+            <label for="">Cost</label>
+            <input name="cost" value="<?= $roomposts->cost ?>" type="text" class="form-control">
+        </div>
+
+        <!-- <div class="mb-2">
+            <label for="">Status</label>
+            <select name="status" class="form-control">
+                <option value="">Select a Status</option>
+                <option <?= get_select('status', 'Available') ?> value="Available">Available</option>
+                <option <?= get_select('status', 'Under Maintanance') ?> value="Under Maintanance">Under Maintanance</option>
+                <option <?= get_select('status', 'Occupied') ?> value="Occupied">Occupied</option>
+                <option <?= get_select('status', 'Unavailable') ?> value="Unavailable">Unavailable</option>
+            </select>
+        </div> -->
+
         <div class="mb-2">
             <label for="">Status</label>
             <select name="status" class="form-control">
                 <option value="">Select a Status</option>
-                <option <?= $comds->status == 'Working' ? 'selected' : '' ?> value="Working">Working</option>
-                <option <?= $comds->status == 'Under Maintanance' ? 'selected' : '' ?> value="Under Maintanance">Under Maintanance</option>
-                <option <?= $comds->status == 'Not Working' ? 'selected' : '' ?> value="Not Working">Not Working</option>
+                <option <?= $roomposts->status == 'Available' ? 'selected' : '' ?> value="Available">Available</option>
+                <option <?= $roomposts->status == 'Under Maintanance' ? 'selected' : '' ?> value="Under Maintanance">Under Maintanance</option>
+                <option <?= $roomposts->status == 'Occupied' ? 'selected' : '' ?> value="Occupied">Occupied</option>
+                <option <?= $roomposts->status == 'Unavailable' ? 'selected' : '' ?> value="Unavailable">Unavailable</option>
             </select>
         </div>
-        <div class="mb-2">
+
+
+        <!-- <div class="mb-2">
             <label for="">Note</label>
             <input name="note" value="<?= $comds->note ?>" type="text" class="form-control">
-        </div>
+        </div> -->
 <!--         
         <div class="mb-2">
             <label for="">Email</label>

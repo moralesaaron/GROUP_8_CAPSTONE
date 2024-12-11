@@ -1,11 +1,11 @@
 <?php
 
-class Adminlog extends Controller
+class Dormlog extends Controller
 {
   public function index()
   {
     $errors = [];
-    $user = new User();
+    $user = new Dorm();
 
     if (count($_POST) > 0) {
 
@@ -17,9 +17,9 @@ class Adminlog extends Controller
 
         if (password_verify($_POST['password'], $row->password)) {
 
-          Authadmin::authenticate($row);
+          Authdorm::authenticate($row);
 
-          redirect('admindash');
+          redirect('dormdash');
         } else {
           $errors['errors'] = 'Email or Password is invalid';
         }
@@ -29,7 +29,7 @@ class Adminlog extends Controller
     }
 
 
-    $this->view('adminlog', [
+    $this->view('dormlog', [
       'errors' => $errors
     ]);
   }

@@ -11,10 +11,10 @@
   <h1 class="display-4">Dorm Dashboard</h1>
 
   <span class="me-3">
-            <img class="rounded-circle" width="100px" height="100px" src="<?= ROOT ?>/<?= $_SESSION['USER']->image ?>"
+            <img class="rounded-circle" width="100px" height="100px" src="<?= ROOT ?>/<?= $_SESSION['DORM']->image ?>"
               alt="">
-            <?= $_SESSION['USER']->firstname ?>
-            <?= $_SESSION['USER']->lastname ?>
+            <?= $_SESSION['DORM']->dormname ?>
+            <!-- <?= $_SESSION['DORM']->lastname ?> -->
           </span>
 </div>
 
