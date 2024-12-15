@@ -4,7 +4,7 @@ class Dorms extends Controller
 {
   public function index()
   {
-    if (!Auth::logged_in()) {
+    if (!Authadmin::logged_in()) {
       redirect('login');
     }
 
@@ -36,7 +36,11 @@ class Dorms extends Controller
 
         $dorm->insert($_POST);
 
-        redirect('dorms');
+        if (!Authadmin::logged_in()) {
+           redirect('dorms');
+        }
+
+        redirect('home');
       } else {
         $errors = $dorm->errors;
       }
@@ -49,7 +53,7 @@ class Dorms extends Controller
 
   public function edit($id)
   {
-    if (!Auth::logged_in()) {
+    if (!Authadmin::logged_in()) {
       redirect('login');
     }
 
@@ -71,7 +75,7 @@ class Dorms extends Controller
 
   public function delete($id)
   {
-    if (!Auth::logged_in()) {
+    if (!Authadmin::logged_in()) {
       redirect('login');
     }
 

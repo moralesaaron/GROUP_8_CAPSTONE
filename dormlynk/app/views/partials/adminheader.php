@@ -34,6 +34,9 @@
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/users">Users</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/adms">Admins</a>
+            </li>
+            <!-- <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Payment</a>
             </li>
             <li class="nav-item">
@@ -41,7 +44,12 @@
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Archive</a>
-            </li>
+            </li> -->
+
+
+
+
+            
             <!-- <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/comas">CL-A</a>
             </li>
@@ -75,20 +83,20 @@
 
         </ul>
 
-        <?php if (empty($_SESSION['USER'])): ?>
+        <?php if (empty($_SESSION['ADM'])): ?>
 
           <a href="<?= ROOT ?>/login" class="btn btn-secondary">Login</a>
 
         <?php else: ?>
 
           <span class="me-3">
-            <img class="rounded-circle" width="30px" height="30px" src="<?= ROOT ?>/<?= $_SESSION['USER']->image ?>"
+            <img class="rounded-circle" width="30px" height="30px" src="<?= ROOT ?>/<?= $_SESSION['ADM']->image ?>"
               alt="">
-            <?= $_SESSION['USER']->firstname ?>
-            <?= $_SESSION['USER']->lastname ?>
+            <?= $_SESSION['ADM']->firstname ?>
+            <?= $_SESSION['ADM']->lastname ?>
           </span>
 
-          <a href="<?= ROOT ?>/logout" class="btn btn-secondary">Logout</a>
+          <a href="<?= ROOT ?>/adminlogout" class="btn btn-secondary">Logout</a>
 
         <?php endif; ?>
 

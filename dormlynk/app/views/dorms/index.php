@@ -5,7 +5,7 @@
   <div class="mt-5 d-flex justify-content-between align-items-center">
     <h2>List of Dorms</h2>
 
-    <?php if (!empty($_SESSION['USER'])): ?>
+    <?php if (!empty($_SESSION['ADM'])): ?>
     <a href="<?= ROOT ?>/dorms/create" class="btn btn-primary">Add New Dorm</a>
     <?php endif; ?>
 

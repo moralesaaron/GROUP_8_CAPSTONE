@@ -2,4 +2,492 @@
   color: rgb(0, 0, 0);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
+
+body {
+  background-color: white;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+/* Navigation Bar */
+header {
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+  
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  
+}
+
+
+.navbar img {
+  height: 50px; 
+  width: 200px; 
+  display:flex;
+  object-fit: contain;
+ 
+}
+
+
+.logo span {
+  color: #ff5e14;
+}
+
+
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+
+
+nav ul li {
+  margin: 0 10px;
+  font-weight: 100;
+  font-size: 13px;
+  margin-right: 20px;
+  
+  
+}
+
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+
+nav ul li a:hover {
+  color: #ff5e14;
+}
+
+
+.sign-in {
+  padding: 5px 15px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+.sign-in:hover {
+  background-color: #ff5e14;
+}
+
+
+/* Hero Section */
+.hero {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 120px 20px 40px;
+background-color: white;
+
+}
+
+
+.hero .text {
+width: 50%;
+
+
+
+}
+
+
+.hero .highlight {
+color: #F2501B;
+
+}
+
+
+.hero h1 {
+font-size: 20px;
+font-weight: 100;
+margin-bottom: 0px;
+}
+
+
+.hero p {
+font-size: 18px;
+margin-bottom: 20px;
+margin-top: 0px;
+font-size: small;
+}
+
+
+.hero .search-bar {
+display: flex;
+}
+
+
+.hero .search-bar input {
+padding: 10px;
+font-size: 16px;
+border: 1px solid #ccc;
+border-radius: 5px;
+width: 250px;
+}
+
+
+.hero .search-bar button {
+padding: 10px;
+color: #fff;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+}
+
+
+.hero .hero-image {
+width: 45%;
+}
+
+
+.hero .hero-image img {
+max-width: 100%;
+height: auto;
+}
+
+
+/* About Section */
+.about {
+padding: 60px 20px;
+background-color: #fff;
+text-align: center;
+padding-top: 0%;
+
+}
+
+
+.about h2 {
+font-size: 40px;
+font-weight: 100;
+margin-bottom: 0px;
+color:#F2501B;
+margin-top: 0px;
+justify-content: center;
+align-items: center;
+
+
+}
+
+
+.about-content {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+gap: 40px;
+}
+
+
+.about-image {
+width: 400px;
+padding: r 10px;;
+}
+
+
+.about-image img {
+width: 150%;
+height: auto;
+border-radius: 10px;
+}
+
+
+.about-text {
+max-width: 500px;
+text-align: justify;
+margin-left: 10;
+font-size: 18px;
+line-height: 1.8;
+color: #7f8c8d;
+}
+
+
+.about-text p {
+margin-top: 20px;
+}
+
+
+
+/* Explore Dorms Section */
+.explore-dorms {
+  background-color: #F2501B;
+  color: #fff;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+
+.explore-dorms h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+
+.dorm-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+
+.dorm-card {
+  background-color: #fff;
+  color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 300px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.dorm-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+
+.dorm-card .card-content {
+  padding: 20px;
+  text-align: left;
+}
+
+
+.dorm-card .card-content h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+
+.dorm-card .card-content p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+
+.dorm-card .card-content .price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff5e14;
+}
+
+
+.dorm-card .card-content .view-button {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #ff5e14;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+
+.dorm-card .card-content .view-button:hover {
+  background-color: #e04d0f;
+}
+
+
+/* services */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.services {
+  padding: 50px 0;
+  background-color: #fff;
+}
+
+
+.services h1 {
+  font-size: 2em;
+  color: #333;
+}
+
+
+.service-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+
+.service-item {
+display: flex;
+flex-direction: column; 
+align-items: center; 
+justify-content: center; 
+text-align: center; 
+padding: 20px;
+background: #f9f9f9;
+border: 1px solid #ddd;
+border-radius: 8px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+max-width: 300px;
+}
+
+
+.service-item img {
+height: 50px;
+width: 50px;
+object-fit: contain; 
+margin-bottom: 10px; 
+}
+
+
+.service-item h3 {
+  font-size: 1.2em;
+  color: #ff6d00;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+
+.service-item p {
+  font-size: 0.9em;
+  color: #555;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+
+.highlight-section {
+  padding: 60px 0;
+  background-color: #383A3B;
+  color: #fff;
+  text-align: center;
+}
+.highlight-section p {
+font-weight: 100;
+font-size: 30px;
+}
+
+
+.highlight-section span {
+  color: #ff6d00;
+  font-weight: bold;
+}
+/* Main CTA Section */
+.cta-section {
+  text-align: center;
+  padding: 50px 0;
+  background-color: #fff;
+}
+
+
+.cta-section h2 {
+  font-size: 2em;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+
+.cta-section p {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+
+.cta-buttons {
+  margin-bottom: 40px;
+}
+
+
+.cta-buttons a {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  background-color: #ff6d00;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+
+.cta-buttons a:hover {
+  background-color: #e85c00;
+}
+
+
+/* Footer Section */
+footer {
+  background-color: #111;
+  color: #fff;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+
+footer h3 {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+
+.footer-contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 15px;
+}
+
+
+.footer-contact div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9em;
+}
+
+
+.footer-contact img {
+  width: 24px;
+  height: 24px;
+}
+
+
+.footer-address {
+  font-size: 0.9em;
+  color: #bbb;
+  margin-bottom: 5px;
+}
+
+
+.footer-copyright {
+  font-size: 0.85em;
+  color: #bbb;
+}

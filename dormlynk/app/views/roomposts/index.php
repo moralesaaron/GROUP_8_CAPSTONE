@@ -19,6 +19,7 @@
       <th>Cost</th>
       <th>Date Posted</th>
       <th>Status</th>
+      <!-- <th>Image</th> -->
       <th>View</th>
       
       <th></th>

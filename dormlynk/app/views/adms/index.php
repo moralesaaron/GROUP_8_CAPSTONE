@@ -3,10 +3,10 @@
 <div class="container">
 
   <div class="mt-5 d-flex justify-content-between align-items-center">
-    <h2>List of Users</h2>
+    <h2>List of Admins</h2>
 
     <?php if (!empty($_SESSION['ADM'])): ?>
-    <a href="<?= ROOT ?>/users/create" class="btn btn-primary">Add New</a>
+    <a href="<?= ROOT ?>/adms/create" class="btn btn-primary">Add New</a>
     <?php endif; ?>
 
   </div>
@@ -19,8 +19,8 @@
       <th>Image</th>
       <th></th>
     </tr>
-    <?php if ($users != null) { ?>
-      <?php foreach ($users as $item) { ?>
+    <?php if ($adms != null) { ?>
+      <?php foreach ($adms as $item) { ?>
         <tr>
           <td><?= $item->firstname ?></td>
           <td><?= $item->lastname ?></td>
@@ -30,8 +30,8 @@
           </td>
           
           <td>
-            <a href="<?= ROOT ?>/users/edit/<?= $item->id ?>" class="btn btn-success btn-sm">Edit</a>
-            <a href="<?= ROOT ?>/users/delete/<?= $item->id ?>" class="btn btn-danger btn-sm">Delete</a>
+            <a href="<?= ROOT ?>/adms/edit/<?= $item->id ?>" class="btn btn-success btn-sm">Edit</a>
+            <a href="<?= ROOT ?>/adms/delete/<?= $item->id ?>" class="btn btn-danger btn-sm">Delete</a>
           </td>
         </tr>
       <?php } ?>

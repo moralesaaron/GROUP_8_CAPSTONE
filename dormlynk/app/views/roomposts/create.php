@@ -82,6 +82,10 @@
             <input name="location" value="<?= get_var('location') ?>" type="text" class="form-control">
         </div>
         <div class="mb-2">
+            <label for="">Dorm</label>
+            <input name="dorm" value="<?= $_SESSION['DORM']->dormname ?>" type="text" class="form-control">
+        </div>
+        <div class="mb-2">
             <label for="">Cost</label>
             <input name="cost" value="₱ "<?= get_var('cost') ?>" type="text" class="form-control">
         </div>
@@ -95,6 +99,10 @@
                 <option <?= get_select('status', 'Unavailable') ?> value="Unavailable">Unavailable</option>
             </select>
         </div>
+        <!-- <div class="mb-2">
+            <label for="">Upload Image/s</label>
+            <input type="file" name="image" class="form-control">
+        </div> -->
         <div class="mb-2">
             <!-- Dorm -->
             

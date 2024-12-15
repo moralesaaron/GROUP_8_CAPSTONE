@@ -5,13 +5,13 @@ class Adminlog extends Controller
   public function index()
   {
     $errors = [];
-    $user = new User();
+    $adm = new Adm();
 
     if (count($_POST) > 0) {
 
       $arr['email'] = $_POST['email'];
 
-      $row = $user->first($arr);
+      $row = $adm->first($arr);
 
       if ($row) {
 

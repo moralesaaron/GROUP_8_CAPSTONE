@@ -4,9 +4,9 @@ class Admindash extends Controller
 {
   public function index()
   {
-    //if (!Auth::logged_in()) {
-    //  redirect('login');
-    //}
+    if (!Authadmin::logged_in()) {
+     redirect('adminlog');
+    }
 
     $this->view('admindash');
   }

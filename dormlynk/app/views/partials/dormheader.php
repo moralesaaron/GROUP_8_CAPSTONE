@@ -30,6 +30,9 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/roomposts">Room</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/pendingapps">Pending</a>
+            </li>
             <!-- <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Dorms</a>
             </li>
@@ -91,7 +94,7 @@
             
           </span>
 
-          <a href="<?= ROOT ?>/logout" class="btn btn-secondary">Logout</a>
+          <a href="<?= ROOT ?>/dormlogout" class="btn btn-secondary">Logout</a>
 
         <?php endif; ?>
 

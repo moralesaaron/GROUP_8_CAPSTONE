@@ -1,33 +1,33 @@
 <?php
 
-class Users extends Controller
+class Pendingapps extends Controller
 {
   public function index()
   {
-    if (!Authadmin::logged_in()) {
-      redirect('login');
+    if (!Authdorm::logged_in()) {
+      redirect('dormlog');
     }
 
-    $x = new User();
+    $x = new Pendingapp();
     $rows = $x->findAll();
 
-    $this->view('users/index', [
-      'users' => $rows
+    $this->view('pendingapps/index', [
+      'pendingapps' => $rows
     ]);
   }
 
   public function create()
   {
-    if (!Authadmin::logged_in()) {
-      // redirect('login');
+    if (!Auth::logged_in()) {
+      redirect('login');
     }
 
     $errors = [];
-    $user = new User();
+    $pendingapps = new Pendingapp();
 
     if (count($_POST) > 0) {
 
-      if ($user->validate($_POST)) {
+      if ($pendingapps->validate($_POST)) {
 
         if (count($_FILES) > 0) {
 
@@ -51,26 +51,26 @@ class Users extends Controller
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $_POST['token'] = random_string(60);
 
-        $user->insert($_POST);
+        $pendingapps->insert($_POST);
 
-        redirect('users');
+        redirect('browse');
       } else {
-        $errors = $user->errors;
+        $errors = $pendingapps->errors;
       }
     }
 
-    $this->view('users/create', [
+    $this->view('pendingapps/create', [
       'errors' => $errors
     ]);
   }
 
   public function edit($id)
   {
-    if (!Authadmin::logged_in()) {
+    if (!Authdorm::logged_in()) {
       redirect('login');
     }
 
-    $x = new User();
+    $x = new Pendingapp();
     $arr['id'] = $id;
     $row = $x->first($arr);
 
@@ -78,21 +78,21 @@ class Users extends Controller
 
       $x->update($id, $_POST);
 
-      redirect('users');
+      redirect('pendingapps');
     }
 
-    $this->view('users/edit', [
-      'user' => $row
+    $this->view('pendingapps/edit', [
+      'pendingapps' => $row
     ]);
   }
 
   public function delete($id)
   {
-    if (!Authadmin::logged_in()) {
+    if (!Authdorm::logged_in()) {
       redirect('login');
     }
 
-    $x = new User();
+    $x = new Pendingapp();
     $arr['id'] = $id;
     $row = $x->first($arr);
 
@@ -100,11 +100,11 @@ class Users extends Controller
 
       $x->delete($id);
 
-      redirect('users');
+      redirect('pendingapps');
     }
 
-    $this->view('users/delete', [
-      'user' => $row
+    $this->view('pendingapps/delete', [
+      'pendingapps' => $row
     ]);
   }
 }

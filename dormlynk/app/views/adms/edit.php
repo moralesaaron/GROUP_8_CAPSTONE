@@ -1,9 +1,9 @@
-<?php include PATH . "partials/header.php" ?>
+<?php include PATH . "partials/adminheader.php" ?>
 
 <div class="container">
 
     <form action="" method="POST" class="mt-5 w-50 mx-auto">
-        <h2>Edit User</h2>
+        <h2>Edit Admin</h2>
 
         <!-- <div class="mb-2">
             <label for="">Role</label>
@@ -16,19 +16,19 @@
 
         <div class="mb-2">
             <label for="">First Name</label>
-            <input name="firstname" value="<?= $user->firstname ?>" type="text" class="form-control">
+            <input name="firstname" value="<?= $adm->firstname ?>" type="text" class="form-control">
         </div>
         <div class="mb-2">
             <label for="">Last Name</label>
-            <input name="lastname" value="<?= $user->lastname ?>" type="text" class="form-control">
+            <input name="lastname" value="<?= $adm->lastname ?>" type="text" class="form-control">
         </div>
         <div class="mb-2">
             <label for="">Email</label>
-            <input name="email" value="<?= $user->email ?>" type="email" class="form-control">
+            <input name="email" value="<?= $adm->email ?>" type="email" class="form-control">
         </div>
         <div class="mb-2">
             <label for="">Password</label>
-            <input name="password" value="<?= $user->password ?>" type="password" class="form-control">
+            <input name="password" value="<?= $adm->password ?>" type="password" class="form-control">
         </div>
 
         <button type="submit" class="btn btn-primary">Update</button>

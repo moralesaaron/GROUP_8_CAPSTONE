@@ -1,33 +1,33 @@
 <?php
 
-class Users extends Controller
+class Adms extends Controller
 {
   public function index()
   {
-    if (!Auth::logged_in()) {
+    if (!Authadmin::logged_in()) {
       redirect('login');
     }
 
-    $x = new User();
+    $x = new Adm();
     $rows = $x->findAll();
 
-    $this->view('users/index', [
-      'users' => $rows
+    $this->view('adms/index', [
+      'adms' => $rows
     ]);
   }
 
   public function create()
   {
-    if (!Auth::logged_in()) {
+    if (!Authadmin::logged_in()) {
       // redirect('login');
     }
 
     $errors = [];
-    $user = new User();
+    $adm = new Adm();
 
     if (count($_POST) > 0) {
 
-      if ($user->validate($_POST)) {
+      if ($adm->validate($_POST)) {
 
         if (count($_FILES) > 0) {
 
@@ -51,26 +51,26 @@ class Users extends Controller
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $_POST['token'] = random_string(60);
 
-        $user->insert($_POST);
+        $adm->insert($_POST);
 
-        redirect('users');
+        redirect('adms');
       } else {
-        $errors = $user->errors;
+        $errors = $adm->errors;
       }
     }
 
-    $this->view('users/create', [
+    $this->view('adms/create', [
       'errors' => $errors
     ]);
   }
 
   public function edit($id)
   {
-    if (!Auth::logged_in()) {
+    if (!Authadmin::logged_in()) {
       redirect('login');
     }
 
-    $x = new User();
+    $x = new Adm();
     $arr['id'] = $id;
     $row = $x->first($arr);
 
@@ -78,21 +78,21 @@ class Users extends Controller
 
       $x->update($id, $_POST);
 
-      redirect('users');
+      redirect('adms');
     }
 
-    $this->view('users/edit', [
-      'user' => $row
+    $this->view('adms/edit', [
+      'adm' => $row
     ]);
   }
 
   public function delete($id)
   {
-    if (!Auth::logged_in()) {
+    if (!Authadmin::logged_in()) {
       redirect('login');
     }
 
-    $x = new User();
+    $x = new Adm();
     $arr['id'] = $id;
     $row = $x->first($arr);
 
@@ -100,11 +100,11 @@ class Users extends Controller
 
       $x->delete($id);
 
-      redirect('users');
+      redirect('adms');
     }
 
-    $this->view('users/delete', [
-      'user' => $row
+    $this->view('adms/delete', [
+      'adm' => $row
     ]);
   }
 }

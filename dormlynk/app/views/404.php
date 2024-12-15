@@ -53,6 +53,7 @@ h3 {
 
 <div class="bgimg-1">
   <div class="caption">
+  <span class="border">ERROR 404</span>
     <span class="border">SORRY...</span><br>
     <span class="border">THIS PAGE CAN'T BE FOUND</span><br>
     

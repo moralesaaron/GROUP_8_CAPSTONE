@@ -1,11 +1,11 @@
-<?php include PATH . "partials/adminheader.php" ?>
+<?php include PATH . "partials/dormheader.php" ?>
 
 <div class="container">
 
   <div class="mt-5 d-flex justify-content-between align-items-center">
-    <h2>List of Users</h2>
+    <h2>Pending Applications</h2>
 
-    <?php if (!empty($_SESSION['USER'])): ?>
+    <?php if (!empty($_SESSION['ADM'])): ?>
     <a href="<?= ROOT ?>/users/create" class="btn btn-primary">Add New</a>
     <?php endif; ?>
 
@@ -17,10 +17,11 @@
       <th>Last Name</th>
       <th>Email</th>
       <th>Image</th>
+      <th>Status</th>
       <th></th>
     </tr>
-    <?php if ($users != null) { ?>
-      <?php foreach ($users as $item) { ?>
+    <?php if ($pendingapps != null) { ?>
+      <?php foreach ($pendingapps as $item) { ?>
         <tr>
           <td><?= $item->firstname ?></td>
           <td><?= $item->lastname ?></td>
@@ -28,10 +29,11 @@
           <td>
             <img width="50px" height="50px" src="<?= ROOT ?>/<?= $item->image ?>" alt="">
           </td>
+          <td><?= $item->appstatus ?></td>
           
           <td>
-            <a href="<?= ROOT ?>/users/edit/<?= $item->id ?>" class="btn btn-success btn-sm">Edit</a>
-            <a href="<?= ROOT ?>/users/delete/<?= $item->id ?>" class="btn btn-danger btn-sm">Delete</a>
+            <a href="<?= ROOT ?>/pendingapps/edit/<?= $item->id ?>" class="btn btn-success btn-sm">View</a>
+            <a href="<?= ROOT ?>/pendingapps/delete/<?= $item->id ?>" class="btn btn-danger btn-sm">Delete</a>
           </td>
         </tr>
       <?php } ?>
