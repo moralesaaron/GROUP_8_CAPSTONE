@@ -94,7 +94,7 @@
             <input name="password" value="<?= $_SESSION['USER']->dormname ?>" type="password" class="form-control">
         </div> -->
 
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Submit Application</button>
     </form>
 
 </div>

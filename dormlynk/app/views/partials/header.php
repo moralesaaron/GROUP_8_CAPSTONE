@@ -57,9 +57,9 @@
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/users">Users</a>
             </li> -->
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<?= ROOT ?>/profile">My Profile</a>
-            </li>
+            </li> -->
             
             <?php endif; ?>
           

@@ -17,7 +17,7 @@
 
     <a href="<?= ROOT ?>/pendingapps/create" class="btn btn-success rounded-pill px-3">Apply</a>
   <!-- <button class="btn btn-success rounded-pill px-3" href="<?= ROOT ?>/pendingapps/create" type="button">Apply</button> -->
-  <button class="btn btn-dark rounded-pill px-3" type="button">View Fineprint</button>
+  <!-- <button class="btn btn-dark rounded-pill px-3" type="button">View Fineprint</button> -->
 
 </div>
 <br>
@@ -66,17 +66,12 @@ Couples in particular like the location – they rated it 8.6 for a two-person t
 
 
 <div class="container flex">
-<h1 class="display-4">House Rules</h1>
 
 
 
 
 
-<h2>Check-in</h2>
-<h4>From 4:00 PM to 10:30 PM</h4>
-<br>
-<h2>Check-out</h2>
-<h4>From 12:00 AM to 11:00 AM</h4>
+
 
 </div>
 

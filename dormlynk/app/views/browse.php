@@ -49,7 +49,7 @@
   <div class="mt-5 d-flex justify-content-between align-items-center">
     <h2>Recent Room Listings</h2>
 
-    <?php if (!empty($_SESSION['USER'])): ?>
+    <?php if (!empty($_SESSION['DORM'])): ?>
     <a href="<?= ROOT ?>/roomposts/create" class="btn btn-primary">Add New</a>
     <?php endif; ?>
 
