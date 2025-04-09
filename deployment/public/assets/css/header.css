@@ -6,3 +6,7 @@
     width: 100%;
     z-index: 1000;
   }
+
+  .navbar-brand img {
+    height: 60px;
+}

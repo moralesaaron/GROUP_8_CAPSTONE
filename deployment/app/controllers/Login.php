@@ -4,33 +4,62 @@ class Login extends Controller
 {
   public function index()
   {
+    // 🚫 Block access to login if already logged in
+    if (Auth::logged_in()) {
+      $role = $_SESSION['USER']->role;
+
+      switch ($role) {
+        case 'admin':
+          redirect('admin/dashboard');
+          break;
+        case 'dorm':
+          redirect('dorm/dashboard');
+          break;
+        case 'user':
+          redirect('explore');
+          break;
+        default:
+          Auth::logout(); // just in case
+          redirect('login');
+      }
+    }
+
     $errors = [];
     $user = new User();
 
-    if (count($_POST) > 0) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $email = trim($_POST['email'] ?? '');
+      $password = $_POST['password'] ?? '';
 
-      $arr['email'] = $_POST['email'];
+      if (!empty($email) && !empty($password)) {
+        $row = $user->first(['email' => $email]);
 
-      $row = $user->first($arr);
-
-      if ($row) {
-
-        if (password_verify($_POST['password'], $row->password)) {
-
+        if ($row && password_verify($password, $row->password)) {
           Auth::authenticate($row);
 
-          redirect('reports');
+          // 🔁 Redirect based on role
+          switch ($row->role) {
+            case 'admin':
+              redirect('admin/dashboard');
+              break;
+            case 'dorm':
+              redirect('dorm/dashboard');
+              break;
+            case 'user':
+              redirect('explore');
+              break;
+            default:
+              $errors['errors'] = 'Unrecognized role. Contact support.';
+              Auth::logout();
+          }
         } else {
           $errors['errors'] = 'Email or Password is invalid';
         }
       } else {
-        $errors['errors'] = 'Email or Password is invalid';
+        $errors['errors'] = 'Please fill in all fields.';
       }
     }
 
-
-    $this->view('login', [
-      'errors' => $errors
-    ]);
+    $this->view('login', ['errors' => $errors]);
   }
 }

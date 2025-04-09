@@ -1,6 +1,6 @@
 <?php
 
-class User extends Model
+class Admin extends Model
 {
   public function validate($data)
   {
@@ -37,10 +37,4 @@ class User extends Model
     }
     return false;
   }
-
-  public function getUserById($id)
-    {
-        return $this->where(['id' => $id]);
-    }
-
 }

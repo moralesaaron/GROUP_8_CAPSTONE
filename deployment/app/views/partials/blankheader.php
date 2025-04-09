@@ -15,7 +15,7 @@
     <div class="overlay"></div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom px-5 py-3">
-        <a class="navbar-brand fw-bold fs-4" href="<?= ROOT ?>/home">
+        <a class="navbar-brand fw-bold fs-4" href="#">
         <img src="<?= ROOT ?>/assets/images/logo.png" alt="DormLynk Logo" class="me-2" style="height: 40px;">
         DormLynk</a>
         <div class="collapse navbar-collapse">
@@ -34,47 +34,13 @@
                         <li><a class="dropdown-item" href="#">Careers</a></li>
                     </ul>
                 </li> -->
-                <li class="nav-item"><a class="nav-link" href="<?= ROOT ?>/home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= ROOT ?>/explore">Explore</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= ROOT ?>/about">About</a></li>
-                <li><hr class="divider"></li>
-
-
                 
-
-
-
-
-                <!-- <li class="nav-item"><a class="custom-button text-white" href="<?= ROOT ?>/login">Login</a></li> -->
-                <!-- <li class="nav-item"><a class="custom-button text-white" data-bs-toggle="modal" data-bs-target="#loginModal" href="#">Login</a></li> -->
             </ul>
-
-
-            <?php if (empty($_SESSION['USER'])): ?>
-
-<a href="<?= ROOT ?>/login" class="custom-button text-white">Login</a>
-
-<?php else: ?>
-
-<div class="dropdown">
-    <a class="d-flex align-items-center text-decoration-none dropdown-toggle" href="#" role="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="<?= ROOT ?>/<?= $_SESSION['USER']->image ?>" alt="Profile" width="32" height="32" class="rounded-circle me-2">
-        <span>Profile</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-        <li><a class="dropdown-item" href="<?= ROOT ?>/profile">View Profile</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="<?= ROOT ?>/logout">Logout</a></li>
-    </ul>
-</div>
-
-<?php endif; ?>
-
         </div>
     </nav>
 
     <!-- Login Modal -->
-<!-- <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -96,6 +62,6 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 

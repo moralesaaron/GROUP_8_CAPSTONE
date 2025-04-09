@@ -4,7 +4,7 @@ class Users extends Controller
 {
   public function index()
   {
-    if (!Auth::logged_in()) {
+    if (!Authadmin::logged_in()) {
       redirect('login');
     }
 
@@ -18,8 +18,8 @@ class Users extends Controller
 
   public function create()
   {
-    if (!Auth::logged_in()) {
-      redirect('login');
+    if (!Authadmin::logged_in()) {
+      // redirect('login');
     }
 
     $errors = [];
@@ -66,7 +66,7 @@ class Users extends Controller
 
   public function edit($id)
   {
-    if (!Auth::logged_in()) {
+    if (!Authadmin::logged_in()) {
       redirect('login');
     }
 
@@ -88,7 +88,7 @@ class Users extends Controller
 
   public function delete($id)
   {
-    if (!Auth::logged_in()) {
+    if (!Authadmin::logged_in()) {
       redirect('login');
     }
 
@@ -107,4 +107,82 @@ class Users extends Controller
       'user' => $row
     ]);
   }
+
+  public function register_user()
+{
+  $errors = [];
+  $user = new User();
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_POST['role'] = 'user'; // Force role
+
+    if ($user->validate($_POST)) {
+
+      // Optional image upload
+      if (!empty($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        $allowed = ['image/png', 'image/jpeg'];
+        if (in_array($_FILES['image']['type'], $allowed)) {
+          $folder = 'assets/images/';
+          if (!file_exists($folder)) mkdir($folder, 0777, true);
+
+          $destination = $folder . $_FILES['image']['name'];
+          move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+          $_POST['image'] = $destination;
+        }
+      }
+
+      $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+      $_POST['token'] = random_string(60);
+
+      $user->insert($_POST);
+      redirect('login');
+    } else {
+      $errors = $user->errors;
+    }
+  }
+
+  $this->view('register_user', ['errors' => $errors]);
 }
+
+
+public function register_dorm()
+{
+  $errors = [];
+  $user = new User();
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_POST['role'] = 'dorm';
+
+    if ($user->validate($_POST)) {
+
+      if (!empty($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        $allowed = ['image/png', 'image/jpeg'];
+        if (in_array($_FILES['image']['type'], $allowed)) {
+          $folder = 'assets/images/';
+          if (!file_exists($folder)) mkdir($folder, 0777, true);
+
+          $destination = $folder . $_FILES['image']['name'];
+          move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+          $_POST['image'] = $destination;
+        }
+      }
+
+      $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+      $_POST['token'] = random_string(60);
+
+      $user->insert($_POST);
+      redirect('login');
+    } else {
+      $errors = $user->errors;
+    }
+  }
+
+  $this->view('register_dorm', ['errors' => $errors]);
+}
+
+
+}
+
+
+
+

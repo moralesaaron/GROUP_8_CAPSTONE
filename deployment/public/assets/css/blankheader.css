@@ -1,0 +1,14 @@
+.navbar-custom {
+  background-color: #F2501B;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  z-index: 1000;
+  height: 70px; 
+  display: flex;
+  align-items: center; 
+  /* position: fixed; */
+}
+
+  .navbar-brand img {
+    height: 60px;
+}
