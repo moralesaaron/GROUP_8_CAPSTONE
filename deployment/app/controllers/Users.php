@@ -4,23 +4,22 @@ class Users extends Controller
 {
   public function index()
   {
-    if (!Authadmin::logged_in()) {
-      redirect('login');
-    }
+    if (!isset($_SESSION['USER']) || $_SESSION['USER']->role !== 'admin') {
+    redirect('login');
+  }
 
-    $x = new User();
-    $rows = $x->findAll();
+  $user = new User();
 
-    $this->view('users/index', [
-      'users' => $rows
-    ]);
+  // Only fetch users with role 'user'
+  $data['users'] = $user->where(['role' => 'user']);
+
+  $this->view('users/index', $data); 
   }
 
   public function create()
   {
-    if (!Authadmin::logged_in()) {
-      // redirect('login');
-    }
+    require_admin();
+
 
     $errors = [];
     $user = new User();
@@ -29,27 +28,10 @@ class Users extends Controller
 
       if ($user->validate($_POST)) {
 
-        if (count($_FILES) > 0) {
-
-          $allowed[] = 'image/png';
-          $allowed[] = 'image/jpeg';
-
-          if ($_FILES['image']['error'] == 0 && in_array($_FILES['image']['type'], $allowed)) {
-
-            $folder = 'assets/images/';
-
-            if (!file_exists($folder)) {
-              mkdir($folder, 0777, true);
-            }
-
-            $destination = $folder . $_FILES['image']['name'];
-            move_uploaded_file($_FILES['image']['tmp_name'], $destination);
-            $_POST['image'] = $destination;
-          }
-        }
+        
 
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $_POST['token'] = random_string(60);
+        $_POST['token'] = bin2hex(random_bytes(32));
 
         $user->insert($_POST);
 
@@ -66,9 +48,7 @@ class Users extends Controller
 
   public function edit($id)
   {
-    if (!Authadmin::logged_in()) {
-      redirect('login');
-    }
+    require_admin();
 
     $x = new User();
     $arr['id'] = $id;
@@ -87,26 +67,23 @@ class Users extends Controller
   }
 
   public function delete($id)
-  {
-    if (!Authadmin::logged_in()) {
-      redirect('login');
-    }
+{
+  require_admin();
 
-    $x = new User();
-    $arr['id'] = $id;
-    $row = $x->first($arr);
+  $userModel = new User();
+  $user = $userModel->first(['id' => $id]);
 
-    if (count($_POST) > 0) {
-
-      $x->delete($id);
-
-      redirect('users');
-    }
-
-    $this->view('users/delete', [
-      'user' => $row
-    ]);
+  
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $userModel->delete($id);
+    redirect('users');
   }
+
+  $this->view('users/delete', [
+    'user' => $user
+  ]);
+}
+
 
   public function register_user()
 {
@@ -114,35 +91,43 @@ class Users extends Controller
   $user = new User();
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_POST['role'] = 'user'; // Force role
+    $_POST['role'] = 'user';
+    $_POST['token'] = random_string(60);
+    $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    if ($user->validate($_POST)) {
+    // Image Upload
+    if (!empty($_FILES['image']['name'])) {
+      $allowed = ['image/jpeg', 'image/png', 'image/jpg'];
+      if ($_FILES['image']['error'] === 0 && in_array($_FILES['image']['type'], $allowed)) {
+        $folder = 'assets/images/';
+        if (!file_exists($folder)) mkdir($folder, 0777, true);
 
-      // Optional image upload
-      if (!empty($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $allowed = ['image/png', 'image/jpeg'];
-        if (in_array($_FILES['image']['type'], $allowed)) {
-          $folder = 'assets/images/';
-          if (!file_exists($folder)) mkdir($folder, 0777, true);
+        $filename = time() . '_' . $_FILES['image']['name'];
+        $destination = $folder . $filename;
 
-          $destination = $folder . $_FILES['image']['name'];
-          move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $destination)) {
           $_POST['image'] = $destination;
+        } else {
+          $errors[] = "Image upload failed. Please try again.";
         }
+      } else {
+        $errors[] = "Invalid image file type.";
       }
+    }
 
-      $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-      $_POST['token'] = random_string(60);
-
+    // Validation and Insertion
+    if (empty($errors) && $user->validate($_POST)) {
       $user->insert($_POST);
       redirect('login');
     } else {
-      $errors = $user->errors;
+      $errors = array_merge($errors, $user->errors);
     }
   }
 
   $this->view('register_user', ['errors' => $errors]);
 }
+
+
 
 
 public function register_dorm()
@@ -152,28 +137,35 @@ public function register_dorm()
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_POST['role'] = 'dorm';
+    $_POST['token'] = random_string(60);
+    $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    if ($user->validate($_POST)) {
+    // Image Upload
+    if (!empty($_FILES['image']['name'])) {
+      $allowed = ['image/jpeg', 'image/png', 'image/jpg'];
+      if ($_FILES['image']['error'] === 0 && in_array($_FILES['image']['type'], $allowed)) {
+        $folder = 'assets/images/';
+        if (!file_exists($folder)) mkdir($folder, 0777, true);
 
-      if (!empty($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $allowed = ['image/png', 'image/jpeg'];
-        if (in_array($_FILES['image']['type'], $allowed)) {
-          $folder = 'assets/images/';
-          if (!file_exists($folder)) mkdir($folder, 0777, true);
+        $filename = time() . '_' . $_FILES['image']['name'];
+        $destination = $folder . $filename;
 
-          $destination = $folder . $_FILES['image']['name'];
-          move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $destination)) {
           $_POST['image'] = $destination;
+        } else {
+          $errors[] = "Image upload failed. Please try again.";
         }
+      } else {
+        $errors[] = "Invalid image file type.";
       }
+    }
 
-      $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-      $_POST['token'] = random_string(60);
-
+    // Validation and Insertion
+    if (empty($errors) && $user->validate($_POST)) {
       $user->insert($_POST);
       redirect('login');
     } else {
-      $errors = $user->errors;
+      $errors = array_merge($errors, $user->errors);
     }
   }
 

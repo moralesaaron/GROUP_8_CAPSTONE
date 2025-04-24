@@ -58,8 +58,8 @@
 
 <div class="dropdown">
     <a class="d-flex align-items-center text-decoration-none dropdown-toggle" href="#" role="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="<?= ROOT ?>/<?= $_SESSION['USER']->image ?>" alt="Profile" width="32" height="32" class="rounded-circle me-2">
-        <span>Profile</span>
+    <img src="<?= ROOT ?>/public/assets/images/<?= $_SESSION['USER']->image ?>" alt="Profile" width="32" height="32" class="rounded-circle me-2">
+
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
         <li><a class="dropdown-item" href="<?= ROOT ?>/profile">View Profile</a></li>

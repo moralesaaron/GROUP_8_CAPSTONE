@@ -1,8 +1,8 @@
 <?php
 
-define('ROOT', 'http://localhost/group_8_capstone/deployment/public');
+define('ROOT', 'http://localhost/GROUP_8_CAPSTONE/deployment/public');
 define('PATH', 'C:/xampp/htdocs/GROUP_8_CAPSTONE/deployment/app/views/');
-//define('APP_NAME', 'comLAB');
+define('APP_NAME', 'DormLynk');
 
 
 define('DB_HOST', 'localhost');

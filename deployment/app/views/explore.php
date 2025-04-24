@@ -28,72 +28,77 @@
         </div>
     </div>
 
-    <!-- Flash Sale Section -->
-<div class="container mt-5">
-    <h2 class="text-dark">Featured Dorms</h2>
     
-    <!-- Product List -->
+
+<div class="container mt-5">
+    <h2 class="text-dark">Featured Rooms</h2>
+
+    <!-- Horizontal scrollable room cards -->
     <div class="row mt-3 flex-nowrap overflow-auto">
-        <div class="col-md-2 col-6">
-            <div class="card border-light shadow-sm">
-                <img src="<?= ROOT ?>/assets/images/images (2).jpg" class="card-img-top" alt="Product">
-                <div class="card-body p-2">
-                    <h6 class="card-title">Modern 1-Bed Space Near Campus </h6>
-                    <p class="text-danger fw-bold mb-0">₱1,500</p>
-                    <small class="text-muted ">Cebu City, Cebu</small>
-                    
+    <?php if (!empty($data['rooms'])): ?>
+    <?php foreach($data['rooms'] as $room): ?>
+        <!-- Room Card -->
+        <div class="col-md-2 col-6 mb-3">
+        <a href="<?= ROOT ?>/pubrooms/show/<?= $room->id ?>" class="text-decoration-none text-dark">
+
+                <div class="card border-light shadow-sm">
+                    <img src="<?= ROOT ?>/<?= $room->image ?? '' ?>" class="card-img-top" alt="Room Image">
+                    <div class="card-body p-2">
+                        <h6 class="card-title mb-1"><?= htmlspecialchars($room->room_name); ?></h6>
+                        <p class="text-danger fw-bold mb-0">₱<?= number_format($room->price); ?></p>
+                        <small class="text-muted">
+                        <?= htmlspecialchars($room->location); ?>
+                        </small>
+                    </div>
                 </div>
+                </a>
             </div>
-        </div>
-        <div class="col-md-2 col-6">
-            <div class="card border-light shadow-sm">
-                <img src="<?= ROOT ?>/assets/images/images (3).jpg" class="card-img-top" alt="Product">
-                <div class="card-body p-2">
-                    <h6 class="card-title">Affordable Single Room for Rent</h6>
-                    <p class="text-danger fw-bold mb-0">₱1,700</p>
-                    <small class="text-muted ">Davao City, Davao del Sur</small>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2 col-6">
-            <div class="card border-light shadow-sm">
-                <img src="<?= ROOT ?>/assets/images/images (4).jpg" class="card-img-top" alt="Product">
-                <div class="card-body p-2">
-                    <h6 class="card-title">Furnished 1-Bed Dorm Retreat</h6>
-                    <p class="text-danger fw-bold mb-0">₱1,900</p>
-                    <small class="text-muted ">Baguio City, Benguet</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2 col-6">
-            <div class="card border-light shadow-sm">
-                <img src="<?= ROOT ?>/assets/images/images (5).jpg" class="card-img-top" alt="Product">
-                <div class="card-body p-2">
-                    <h6 class="card-title">Quiet & Comfortable 1-Bed Room</h6>
-                    <p class="text-danger fw-bold mb-0">₱2,200</p>
-                    <small class="text-muted ">Iloilo City, Iloilo</small>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2 col-6">
-            <div class="card border-light shadow-sm">
-                <img src="<?= ROOT ?>/assets/images/images (6).jpg" class="card-img-top" alt="Product">
-                <div class="card-body p-2">
-                    <h6 class="card-title">Bright & Spacious 1-Bed Room</h6>
-                    <p class="text-danger fw-bold mb-0">₱2,500</p>
-                    <small class="text-muted ">Cagayan de Oro City, Misamis Oriental</small>
-                    
-                </div>
-            </div>
-        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>No featured rooms found.</p>
+<?php endif; ?>
     </div>
 
-    <!-- Shop All Products Button -->
-    <div class="mt-3 text-end">
-        <!-- <a href="#" class="btn btn-warning text-white">SHOP ALL PRODUCTS</a> -->
-        <a href="#" class="custom-button text-white me-3">VIEW ALL DORMS</a>
+    <!-- Button -->
+    <div class="text-end mt-3">
+        <a href="<?= ROOT ?>/rooms" class="btn btn-danger">VIEW ALL ROOMS</a>
+    </div>
+</div>
+
+ <!-- this too! -->
+
+ <div class="container mt-5">
+ <h2 class="text-dark mt-5">Featured Dorms</h2>
+
+    <div class="row mt-3 flex-nowrap overflow-auto">
+    <?php if (!empty($data['dorms'])): ?>
+        <?php foreach($data['dorms'] as $dorm): ?>
+            <!-- Dorm Card -->
+
+             <!-- Clickable card -->
+             
+            <div class="col-md-2 col-6 mb-3">
+            <a href="<?= ROOT ?>/pubdorms/show/<?= $dorm->id ?>" class="text-decoration-none text-dark">
+                <div class="card border-light shadow-sm">
+                    <img src="<?= ROOT ?>/<?= $dorm->image ?? '' ?>" class="card-img-top" alt="Dorm Image">
+                    
+                    <div class="card-body p-2">
+                        <h6 class="card-title mb-1"><?= htmlspecialchars($dorm->name); ?></h6>
+                        <small class="text-muted"><?= htmlspecialchars($dorm->city . ', ' . $dorm->province); ?></small>
+                    </div>
+                </div>
+                </a>
+            </div>
+        
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>No featured dorms found.</p>
+    <?php endif; ?>
+    </div>
+
+    <!-- Button -->
+    <div class="text-end mt-3">
+        <a href="<?= ROOT ?>/dorms" class="btn btn-dark">VIEW ALL DORMS</a>
     </div>
 </div>
 

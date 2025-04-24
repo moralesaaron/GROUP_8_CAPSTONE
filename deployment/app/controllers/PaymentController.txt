@@ -1,0 +1,81 @@
+<?php
+
+class PaymentController
+{
+    public function sendInvoice($id)
+    {
+        // Load application and room info
+        $application = $this->getApplication($id);
+        if (!$application) {
+            echo "Application not found.";
+            return;
+        }
+
+        // Get dorm owner's PayPal email (assuming it's stored in the user table)
+        $owner = $this->getUserById($application->dorm_owner_id);
+        if (!$owner || empty($owner->paypal_email)) {
+            echo "Owner PayPal email not set.";
+            return;
+        }
+
+        // Validate price
+        if (!$application->price) {
+            echo "Price is not set for this application.";
+            return;
+        }
+
+        // Email applicant
+        $subject = "Payment Request for Your Dorm Application";
+        $paypalLink = "https://www.paypal.com/paypalme/{$owner->paypal_email}/{$application->price}";
+        $message = "
+            Hello {$application->user_name},<br><br>
+            You've been requested to make a payment of <strong>\${$application->price}</strong> for the room you applied for.<br><br>
+            <a href='$paypalLink' style='
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #0070ba;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+            '>Pay Now via PayPal</a><br><br>
+            Thank you,<br>DormLynk Team
+        ";
+
+        // Send email
+        if ($this->sendEmail($application->user_email, $subject, $message)) {
+            echo "Invoice email sent successfully.";
+        } else {
+            echo "Failed to send the invoice email.";
+        }
+    }
+
+    private function getApplication($id)
+    {
+        $db = new Database();
+        $query = "SELECT a.*, u.email AS user_email, u.name AS user_name, d.user_id AS dorm_owner_id, r.price
+                  FROM applications a
+                  JOIN users u ON a.user_id = u.id
+                  JOIN rooms r ON a.room_id = r.id
+                  JOIN dorms d ON r.dorm_id = d.id
+                  WHERE a.id = :id";
+        $data = $db->query($query, ['id' => $id]);
+        return $data[0] ?? null;
+    }
+
+    private function getUserById($id)
+    {
+        $db = new Database();
+        $query = "SELECT * FROM users WHERE id = :id";
+        $data = $db->query($query, ['id' => $id]);
+        return $data[0] ?? null;
+    }
+
+    private function sendEmail($to, $subject, $message)
+    {
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= "From: DormLynk <no-reply@dormlynk.com>" . "\r\n";
+
+        return mail($to, $subject, $message, $headers);
+    }
+}

@@ -1,2 +1,54 @@
 @import url("login.css");
 @import url("home.css");
+
+/* Image thumbnails */
+.product-thumbnails img {
+    border: 2px solid #e0e0e0;
+    padding: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.product-thumbnails img:hover {
+    transform: scale(1.05);
+    border-color: #007bff;
+}
+
+/* Product title */
+h2 {
+    font-weight: bold;
+}
+
+/* Price styling */
+h3.text-primary {
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+/* Button group spacing */
+.btn-group .btn {
+    margin-right: 10px;
+}
+
+/* Add to cart button */
+button.btn-primary {
+    padding: 10px 30px;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+/* Responsive image */
+.img-fluid {
+    border-radius: 12px;
+}
+
+
+/* .view-details-btn {
+    position: relative;
+    z-index: 1000;
+  } */
+
+  
+  
+

@@ -15,7 +15,7 @@
     <div class="overlay"></div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom px-5 py-3">
-        <a class="navbar-brand fw-bold fs-4" href="#">
+        <a class="navbar-brand fw-bold fs-4" href="<?= ROOT ?>/home">
         <img src="<?= ROOT ?>/assets/images/logo.png" alt="DormLynk Logo" class="me-2" style="height: 40px;">
         DormLynk</a>
         <div class="collapse navbar-collapse">

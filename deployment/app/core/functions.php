@@ -1,11 +1,11 @@
 <?php
 
-function show($stuff)
-{
-  echo '<pre>';
-  print_r($stuff);
-  echo '</pre>';
-}
+// function show($stuff)
+// {
+//   echo '<pre>';
+//   print_r($stuff);
+//   echo '</pre>';
+// }
 
 function redirect($path)
 {
@@ -42,4 +42,20 @@ function random_string($length)
   }
 
   return $text;
+}
+
+function esc($str) {
+  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+}
+
+function require_admin() {
+  if (!isset($_SESSION['USER']) || $_SESSION['USER']->role !== 'admin') {
+    redirect('login');
+  }
+}
+
+function require_dorm() {
+  if (!isset($_SESSION['USER']) || $_SESSION['USER']->role !== 'dorm') {
+    redirect('login');
+  }
 }

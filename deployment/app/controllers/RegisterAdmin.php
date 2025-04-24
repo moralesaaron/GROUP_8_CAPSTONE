@@ -17,11 +17,21 @@ class RegisterAdmin extends Controller
         'token'     => random_string(60),
       ];
 
-      if ($user->validate($data)) {
-        $user->insert($data);
-        redirect('login');
-      } else {
-        $errors = $user->errors;
+      // Check if the email already exists
+      $existingUser = $user->first(['email' => $data['email']]);
+
+      if ($existingUser) {
+        $errors[] = 'This email is already registered. Please use a different one.';
+      }
+
+      if (empty($errors)) {
+        // Validate and insert if no errors
+        if ($user->validate($data)) {
+          $user->insert($data);
+          redirect('login');
+        } else {
+          $errors = array_merge($errors, $user->errors);
+        }
       }
     }
 
