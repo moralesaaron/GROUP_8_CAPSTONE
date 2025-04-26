@@ -33,8 +33,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        html,
-        body {
+        html, body {
             min-height: 100vh;
         }
 
@@ -42,54 +41,49 @@
             background-color: var(--background-body);
             display: flex;
             flex-direction: column;
-            position: relative;
             overflow-x: hidden;
         }
 
-        /* Header spacing */
         header {
             width: 100%;
         }
 
-        /* Main content area */
         .main-content {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 200px 0;
-            /* Updated to 200px padding top and bottom */
+            padding-top: 50px;
             margin: 2rem 0;
             min-height: 600px;
         }
 
         .dormlynk-login-container {
             display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
-            max-width: 900px;
-            position: relative;
+            max-width: 1000px;
         }
 
         .avatar-section {
-            position: absolute;
-            left: 0;
-            height: 100%;
             display: flex;
             align-items: center;
-            z-index: 1;
+            justify-content: center;
         }
 
         .character-avatar {
-            max-height: 500px;
+            max-height: 450px;
+            width: auto;
             object-fit: contain;
         }
 
         .login-form-section {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top:50px;
+            margin-bottom:80px;
         }
 
         .login-card {
@@ -105,33 +99,9 @@
             margin-bottom: 1rem;
         }
 
-        .logo-icon {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--primary-color);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 6px;
-            transform: rotate(90deg);
-            position: relative;
-        }
-
-        .logo-letter {
-            font-weight: bold;
-            font-size: 1rem;
-            position: absolute;
-        }
-
-        .logo-letter:first-child {
-            left: 8px;
-            top: 6px;
-        }
-
-        .logo-letter:last-child {
-            right: 8px;
-            bottom: 6px;
+        .logo-container img {
+            height: 50px;
+            margin-bottom: 10px;
         }
 
         .welcome-message {
@@ -143,12 +113,12 @@
             font-size: 1.1rem;
             color: var(--primary-color);
             margin-bottom: 0.25rem;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .welcome-message h1 {
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-dark);
         }
 
@@ -190,9 +160,14 @@
             border: none;
             border-radius: var(--border-radius);
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .sign-in-btn:hover {
+            background-color: var(--blue-hover);
         }
 
         .register-option {
@@ -205,9 +180,9 @@
             color: var(--blue-accent);
             text-decoration: none;
             font-weight: 500;
-        }
+            font-size:16px;
+        
 
-        /* Footer styling */
         footer {
             width: 100%;
             padding: 1rem 0;
@@ -220,93 +195,66 @@
         @media (max-width: 900px) {
             .dormlynk-login-container {
                 flex-direction: column;
-                align-items: center;
-            }
-
-            .avatar-section {
-                position: relative;
-                width: 100%;
-                max-height: 300px;
-                justify-content: center;
-                margin-bottom: 2rem;
-
+                gap: 2rem;
             }
 
             .character-avatar {
                 max-height: 300px;
             }
 
-            .login-form-section {
-                position: relative;
-                transform: none;
-                width: 100%;
-                padding: 0 1rem;
-                right: auto;
-                top: auto;
-
-            }
-
-            .login-card {
-                width: 100%;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
             .main-content {
-                padding: 100px 0;
-                /* Reduced padding on mobile */
+                padding: 50px 0;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="main-content">
-        <div class="dormlynk-login-container">
-            <div class="avatar-section">
-                <img src="./assets/images/login.png" alt="DormLynk Avatar" class="character-avatar">
-            </div>
-            <div class="login-form-section">
-                <div class="login-card">
-                    <div class="logo-container">
-                        <div class="logo-icon">
-                            <span class="logo-letter">D</span>
-                            <span class="logo-letter">L</span>
-                        </div>
-                    </div>
-                    <div class="welcome-message">
-                        <h2>Hello Dormies!</h2>
-                        <h1>Welcome to DormLynk</h1>
-                    </div>
 
-                    <form method="post" class="dormlynk-form">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" required>
-                        </div>
+<div class="main-content">
+    <div class="dormlynk-login-container">
+        <div class="avatar-section">
+            <img src="./assets/images/login.png" alt="DormLynk Avatar" class="character-avatar">
+        </div>
 
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" required>
-                        </div>
-
-                        <div class="forgot-password">
-                            <a href="#">Forgot Password?</a>
-                        </div>
-
-                        <button type="submit" class="sign-in-btn">Sign In</button>
-
-                        <div class="register-option">
-                            Not register yet? <a href="register.php" class="create-account-link">Create an Account
-                                here</a>
-                        </div>
-                    </form>
+        <div class="login-form-section">
+            <div class="login-card">
+                <div class="logo-container">
+                    <img src="./assets/images/logo.png" alt="DormLynk Logo">
                 </div>
+                <div class="welcome-message">
+                    <h2>Hello Dormies!</h2>
+                    <h1>Welcome to DormLynk</h1>
+                </div>
+
+                <form method="post" class="dormlynk-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+
+                    <div class="forgot-password">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="sign-in-btn">Sign In</button>
+
+                    <div class="register-option">
+                        Not register yet? <a href="<?php ROOT ?>registeruser" class="create-account-link">Create User Account here</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    <?php include "partials/footer.php"; ?>
+<?php include "partials/footer.php"; ?>
+
 </body>
 
 </html>

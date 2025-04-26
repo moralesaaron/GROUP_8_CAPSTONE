@@ -1,6 +1,6 @@
 <?php include "partials/header.php"; ?>
 
-<div class="container mt-5">
+<div class="container hero-section">
     <h2>Apply for Room</h2>
 
     <!-- Room and Dorm details -->

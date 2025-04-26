@@ -76,7 +76,7 @@ class Myrooms extends Controller
         // ✅ Validate and insert
         if ($roomModel->validate($_POST)) {
             $roomModel->insert($_POST);
-            redirect('myrooms/index/' . $dorm_id);
+            redirect('mydorms/viewdorm/' . $dorm_id);
         } else {
             $errors = $roomModel->errors;
         }

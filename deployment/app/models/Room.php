@@ -54,4 +54,21 @@ class Room extends Model
 
   }
 
+  public function getRoomsOfDorm($dorm_id)
+{
+    // Query to fetch rooms with matching dorm_id, visibility and status
+    $query = "SELECT * FROM rooms 
+              WHERE visibility = 'public' 
+              AND status = 'available' 
+              AND dorm_id = :dorm_id 
+              ORDER BY created_at DESC 
+              LIMIT 5";
+
+    // Execute the query with the dorm_id parameter
+    $result = $this->query($query, ['dorm_id' => $dorm_id]);
+
+    return $result ?: []; // Return rooms or empty array if none found
+}
+
+
 }

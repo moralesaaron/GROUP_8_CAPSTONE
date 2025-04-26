@@ -276,7 +276,7 @@
                     connect with thousands of students looking for their next home. Our simple registration process
                     makes it easy to showcase your property to the right audience.</p>
                 <div class="hero-buttons">
-                    <a href="<?= ROOT ?>/login" class="custom-button me-3">Register Now</a>
+                    <a href="<?= ROOT ?>/registerdorm" class="custom-button me-3">Register Now</a>
                 </div>
             </div>
         </div>

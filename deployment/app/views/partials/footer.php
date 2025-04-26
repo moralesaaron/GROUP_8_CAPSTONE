@@ -11,8 +11,10 @@
                 <img src="<?= ROOT ?>/assets/images/logo.png" alt="DormLynk Logo" class="footer-brand-img">
               </a>
             </div>
-            <p class="footer-desc">Connecting students with the perfect dormitory experience. Find, compare, and secure
-              your ideal campus housing with DormLynk.</p>
+            <p class="footer-desc">
+              Connecting students with the perfect dormitory experience. Find, compare, and secure
+              your ideal campus housing with DormLynk.
+            </p>
             <div class="social-links mt-3">
               <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
               <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
@@ -47,32 +49,18 @@
             </ul>
           </div>
         </div>
-
-        <!-- Newsletter -->
-        <div class="col-lg-3 col-md-6">
-          <div class="footer-widget">
-            <h4 class="widget-title">Newsletter</h4>
-            <p class="newsletter-text">Subscribe for dormitory tips and updates</p>
-            <form class="newsletter-form">
-              <div class="input-group">
-                <input type="email" class="form-control" placeholder="Your email" aria-label="Your email">
-                <button class="btn newsletter-btn" type="submit">
-                  <i class="bi bi-send"></i>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      </div> <!-- End Row -->
+    </div> <!-- End Container Fluid -->
+  </div> <!-- End Footer Main -->
 
   <!-- Footer Bottom -->
   <div class="footer-bottom">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-6 text-center text-md-start">
-          <p class="copyright mb-0">© <?= date('Y') ?> DormLynk. All rights reserved.</p>
+          <p class="copyright mb-0">
+            © <?= date('Y') ?> DormLynk. All rights reserved.
+          </p>
         </div>
         <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
           <ul class="footer-bottom-links">
@@ -82,7 +70,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> <!-- End Footer Bottom -->
 </footer>
 
 <!-- Bootstrap JS (required for dropdowns and other components) -->
@@ -129,7 +117,8 @@
   }
 
   .footer-main {
-    padding: 60px 0 40px;
+    padding-top: 60px ;
+
   }
 
   .footer-widget {
@@ -146,7 +135,7 @@
   .footer-logo {
     margin-bottom: 20px;
   }
-
+  
   .footer-brand-img {
     height: 50px;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
@@ -249,37 +238,6 @@
     box-shadow: 0 5px 15px rgba(242, 80, 27, 0.2);
   }
 
-  .newsletter-text {
-    color: #6c757d;
-    font-size: 14px;
-    margin-bottom: 15px;
-  }
-
-  .newsletter-form .form-control {
-    border-radius: 50px 0 0 50px;
-    border: 1px solid #ced4da;
-    padding: 10px 15px;
-    height: auto;
-    font-size: 14px;
-  }
-
-  .newsletter-form .form-control:focus {
-    box-shadow: none;
-    border-color: #F2501B;
-  }
-
-  .newsletter-btn {
-    border-radius: 0 50px 50px 0;
-    background-color: #F2501B;
-    color: #fff;
-    border: none;
-    padding: 0 20px;
-    transition: all 0.3s ease;
-  }
-
-  .newsletter-btn:hover {
-    background-color: #e13c08;
-  }
 
   .footer-bottom {
     background-color: #e9ecef;

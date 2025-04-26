@@ -81,7 +81,7 @@ class Login extends Controller
                 redirect('admin/dashboard');
                 break;
               case 'dorm':
-                redirect('dormdashboard/dashboard');
+                redirect('DormDashboard/index');
                 break;
               case 'user':
                 redirect('explore');
