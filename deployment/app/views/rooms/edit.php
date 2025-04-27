@@ -1,20 +1,21 @@
-<?php include __DIR__ . '/../partials/ownerheader.php'; 
+<?php include __DIR__ . '/../partials/ownerheader.php';
 ?>
 
 <div class="container my-5">
   <h2 class="mb-4">Edit Room</h2>
 
   <?php
-// 🛠️ Place this BEFORE the <form> starts
-$room_amenities = json_decode($room->amenities ?? '[]', true);
-$available_amenities = ['wifi', 'pool', 'aircon', 'tv', 'kitchen']; // You can expand this list
-?>
-  
+  // 🛠️ Place this BEFORE the <form> starts
+  $room_amenities = json_decode($room->amenities ?? '[]', true);
+  $available_amenities = ['wifi', 'pool', 'aircon', 'tv', 'kitchen']; // You can expand this list
+  ?>
+
 
   <form method="post">
     <div class="mb-3">
       <label for="room_number" class="form-label">Room Number</label>
-      <input type="text" class="form-control" name="room_number" id="room_number" value="<?= $room->room_number ?>" required>
+      <input type="text" class="form-control" name="room_number" id="room_number" value="<?= $room->room_number ?>"
+        required>
     </div>
 
     <div class="mb-3">
@@ -29,7 +30,8 @@ $available_amenities = ['wifi', 'pool', 'aircon', 'tv', 'kitchen']; // You can e
 
     <div class="mb-3">
       <label for="price" class="form-label">Price</label>
-      <input type="number" class="form-control" step="0.01" name="price" id="price" value="<?= $room->price ?>" required>
+      <input type="number" class="form-control" step="0.01" name="price" id="price" value="<?= $room->price ?>"
+        required>
     </div>
 
     <div class="mb-3">
@@ -43,24 +45,18 @@ $available_amenities = ['wifi', 'pool', 'aircon', 'tv', 'kitchen']; // You can e
     </div>
 
     <div class="mb-3">
-  <label class="form-label">Amenities</label><br>
+      <label class="form-label">Amenities</label><br>
 
-  <?php foreach ($available_amenities as $amenity): ?>
-    <div class="form-check form-check-inline">
-      <input 
-        class="form-check-input" 
-        type="checkbox" 
-        name="amenities[]" 
-        id="amenity_<?= $amenity ?>" 
-        value="<?= $amenity ?>"
-        <?= in_array($amenity, $room_amenities) ? 'checked' : '' ?>
-      >
-      <label class="form-check-label" for="amenity_<?= $amenity ?>">
-        <?= ucfirst($amenity) ?>
-      </label>
+      <?php foreach ($available_amenities as $amenity): ?>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="amenities[]" id="amenity_<?= $amenity ?>"
+            value="<?= $amenity ?>" <?= in_array($amenity, $room_amenities) ? 'checked' : '' ?>>
+          <label class="form-check-label" for="amenity_<?= $amenity ?>">
+            <?= ucfirst($amenity) ?>
+          </label>
+        </div>
+      <?php endforeach; ?>
     </div>
-  <?php endforeach; ?>
-</div>
 
     <div class="mb-3">
       <label for="image" class="form-label">Image URL</label>

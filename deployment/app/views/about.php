@@ -1,147 +1,117 @@
 <?php include "partials/header.php" ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>css</title>
     <link rel="stylesheet" href="about.css">
 
-     <style>
-    :root {
-      --primary: #4361ee;
-      --primary-dark: #3a456d;
-      --secondary: #1f1e1b;
-      --accent: #f72585;
-      --light: #f8f9fa;
-      --dark: #212529;
-      --text-primary: ##1f1e1b !important;
-      --text-secondary: #000000;
-      --text-light: #f8f9fa;
-      --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
-      --shadow-md: 0 .5rem 1rem rgba(0,0,0,.15);
-      --shadow-lg: 0 1rem 3rem rgba(0,0,0,.175);
-      --transition: all 0.3s ease;
-      --border-radius: 0.5rem;
-      --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
+    <style>
+        :root {
+            --primary: #F2501B;
+            --secondary: #F2501B;
+            --accent: #F2501B;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text-primary: ##1f1e1b !important;
+            --text-secondary: #000000;
+            --text-light: #f8f9fa;
+            --shadow-sm: 0 .125rem .25rem rgba(0, 0, 0, .075);
+            --shadow-md: 0 .5rem 1rem rgba(0, 0, 0, .15);
+            --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, .175);
+            --transition: all 0.3s ease;
+            --border-radius: 0.5rem;
+            --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
 
-    body {
-      font-family: var(--font-main);
-      color: var(--text-primary);
-      overflow-x: hidden;
-      line-height: 1.7;
-    }
+        body {
+            font-family: var(--font-main);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
 
-    /* Typography */
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
 
-    .display-3 {
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
+        .display-3 {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
 
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      position: relative;
-      margin-bottom: 1rem;
-    }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 1rem;
+        }
 
-    .lead {
-      font-size: 1.25rem;
-      font-weight: 400;
-      line-height: 1.8;
-    }
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 1.8;
+        }
 
-    .text-gradient {
-      background: linear-gradient(to right, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+        .text-gradient {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    /* Accent Line */
-    .accent-line {
-      height: 5px;
-      width: 80px;
-      background: #f28705;
-      border-radius: 5px;
-      margin-bottom: 2rem;
-    }
+        /* Accent Line */
+        .accent-line {
+            height: 5px;
+            width: 80px;
+            background: #f28705;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+        }
 
-    /* Hero Section */
-    .about-hero {
-      padding: 7rem 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,249,250,0.9) 100%);
-      position: relative;
-      overflow: hidden;
-    }
+        /* Hero Section */
+        .about-hero {
+            padding: 7rem 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+        }
 
-    .about-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234361ee' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-      z-index: -1;
-    }
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234361ee' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            z-index: -1;
+        }
 
-    .hero-image {
-      transition: var(--transition);
-      box-shadow: var(--shadow-lg);
-      transform: perspective(1000px) rotateY(-5deg);
-    }
+        .hero-image {
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+            transform: perspective(1000px) rotateY(-5deg);
+        }
 
-    .hero-image:hover {
-      transform: perspective(1000px) rotateY(0deg) scale(1.02);
-    }
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.02);
+        }
 
-    .custom-button {
-      display: inline-block;
-      padding: 0.8rem 2rem;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: white;
-      font-weight: 600;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: var(--transition);
-      box-shadow: var(--shadow-md);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
 
-    .custom-button:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right, var(--secondary), var(--accent));
-      transition: all 0.5s ease;
-      z-index: -1;
-    }
 
-    .custom-button:hover:before {
-      left: 0;
-    }
-
-    .custom-button:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-      color: white;
-    }
-
-    /* Additional Sections (e.g., Story, Team, Stats, etc.) would be placed here similarly */
-
-  </style>
+        /* Additional Sections (e.g., Story, Team, Stats, etc.) would be placed here similarly */
+    </style>
 </head>
+
 <body>
     <div class="about-hero py-5">
         <div class="container">
@@ -156,7 +126,7 @@
                         easy-to-use platform, making dorm hunting and management simple for everyone.
                     </p>
                     <div class="mt-4 animate__animated animate__fadeInUp animate__delay-3s">
- 
+
 
                     </div>
                 </div>
@@ -376,7 +346,7 @@
                     <div class="team-info">
                         <h4>Justine Evangelista</h4>
                         <p class="text-primary">From BSIS 4-F</p>
-                        <p class="team-bio text-body-secondary">"Sometimes you win, sometimes you learn." 
+                        <p class="team-bio text-body-secondary">"Sometimes you win, sometimes you learn."
                             innovation.</p>
                         <div class="team-social">
                             <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
@@ -393,7 +363,7 @@
                     <div class="team-info">
                         <h4>Catrina Legaspina</h4>
                         <p class="text-primary">From BSIS 4-F</p>
-                        <p class="team-bio text-body-secondary">"Do what you can, with what you have, where you are." 
+                        <p class="team-bio text-body-secondary">"Do what you can, with what you have, where you are."
                         </p>
                         <div class="team-social">
                             <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>

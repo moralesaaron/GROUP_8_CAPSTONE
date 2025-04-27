@@ -1,5 +1,6 @@
 <?php include "partials/header.php" ?>
-<link rel="stylesheet" href="<?php ROOT?>./assets/css/explore.css">
+<link rel="stylesheet" href="<?php ROOT ?>./assets/css/explore.css">
+
 <body>
     <!-- Hero Section with Gradient Background -->
     <div class="hero-container">
@@ -33,7 +34,7 @@
         <!-- Horizontal scrollable room cards -->
         <div class="card-scroll-container">
             <?php if (!empty($data['rooms'])): ?>
-                <?php foreach($data['rooms'] as $room): ?>
+                <?php foreach ($data['rooms'] as $room): ?>
                     <!-- Room Card -->
                     <div class="card-item animate-pop">
                         <a href="<?= ROOT ?>/pubrooms/show/<?= $room->id ?>" class="card-link">
@@ -75,7 +76,7 @@
         <!-- Horizontal scrollable dorm cards -->
         <div class="card-scroll-container">
             <?php if (!empty($data['dorms'])): ?>
-                <?php foreach($data['dorms'] as $dorm): ?>
+                <?php foreach ($data['dorms'] as $dorm): ?>
                     <!-- Dorm Card -->
                     <div class="card-item animate-pop">
                         <a href="<?= ROOT ?>/pubdorms/show/<?= $dorm->id ?>" class="card-link">

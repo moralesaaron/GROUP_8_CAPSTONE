@@ -101,7 +101,10 @@ class Owners extends Controller
   ]);
 }
 
-
+  public function booking()
+  {
+    $this->view('dorms/bookings');
+  }
   public function register_user()
 {
   $errors = [];

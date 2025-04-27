@@ -11,6 +11,6 @@ class Billing extends Controller
         $user = new User();
         $data['user'] = $user->getUserById($_SESSION['USER']->id);
 
-        $this->view('billing.view', $data);
+        $this->view('users/billing.view', $data);
     }
 }
