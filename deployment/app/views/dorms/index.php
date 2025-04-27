@@ -8,341 +8,727 @@ if (isset($_SESSION['USER'])) {
 }
 ?>
 
-<div class="container my-5">
-  <!-- Dashboard Header Section -->
-  <div class="dashboard-header mb-4">
-    <div class="row align-items-center">
-      <div class="col-lg-8">
-        <h2 class="dashboard-title fw-bold text-dark mb-1">Dorms Management</h2>
-        <p class="text-muted fs-6">Manage your property listings and room availability</p>
+<div class="dashboard-container">
+  <div class="content-wrapper">
+    <!-- Dashboard Header Section -->
+    <div class="page-header">
+      <div class="header-content">
+        <h1 class="page-title">Dorms Management</h1>
+        <p class="text-muted">Manage your property listings and room availability</p>
       </div>
-      <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+      <div class="header-actions">
         <?php if (isset($_SESSION['USER']) && $_SESSION['USER']->role === 'dorm'): ?>
-          <a href="<?= ROOT ?>/mydorms/create" class="btn btn-orange shadow-sm px-4 py-2">
-            <i class="bi bi-plus-circle me-2"></i>Add New Dorm
+          <a href="<?= ROOT ?>/mydorms/create" class="btn btn-create">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="12" y1="8" x2="12" y2="16"></line>
+              <line x1="8" y1="12" x2="16" y2="12"></line>
+            </svg>
+            <span>Add New Dorm</span>
           </a>
         <?php endif; ?>
       </div>
     </div>
-  </div>
 
-  <!-- Main Content Card -->
-  <div class="card border-0 shadow-sm overflow-hidden">
-    <div class="card-header bg-light d-flex align-items-center py-3 px-4 border-0">
-      <i class="bi bi-building fs-5 text-orange me-2"></i>
-      <span class="fw-semibold">Property Listings</span>
-    </div>
+    <!-- Main Content Card -->
+    <div class="data-card">
+      <div class="card-header-custom">
+        <div class="header-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span>Property Listings</span>
+        </div>
+      </div>
 
-    <div class="card-body p-0">
-      <div class="table-responsive">
-        <table class="table table-borderless align-middle mb-0">
-          <thead>
-            <tr class="bg-light">
-              <th class="px-4 py-3" width="5%">#</th>
-              <th class="py-3" width="20%">Room Name</th>
-              <th class="py-3" width="20%">Location</th>
-              <th class="py-3" width="15%">Status</th>
-              <th class="py-3" width="15%">Available Rooms</th>
-              <th class="text-end pe-4 py-3" width="25%">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php if (!empty($dorms)): ?>
+      <?php if (!empty($dorms)): ?>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th width="5%">#</th>
+                <th width="20%">Room Name</th>
+                <th width="20%">Location</th>
+                <th width="15%">Status</th>
+                <th width="15%">Available Rooms</th>
+                <th width="25%">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
               <?php foreach ($dorms as $index => $dorm): ?>
-                <tr class="<?= $index % 2 === 0 ? 'bg-white' : 'bg-light-orange' ?>">
-                  <td class="px-4"><?= esc($dorm->id) ?></td>
+                <tr>
+                  <td><?= esc($dorm->id) ?></td>
                   <td>
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="avatar-sm bg-orange-soft rounded-circle d-flex align-items-center justify-content-center me-3">
-                        <span class="text-orange fw-bold"><?= strtoupper(substr($dorm->name, 0, 1)) ?></span>
+                    <div class="user-info">
+                      <div class="dorm-avatar">
+                        <span><?= strtoupper(substr($dorm->name, 0, 1)) ?></span>
                       </div>
-                      <div>
-                        <span class="fw-medium"><?= esc($dorm->name) ?></span>
+                      <div class="user-details">
+                        <span class="user-name"><?= esc($dorm->name) ?></span>
                       </div>
                     </div>
                   </td>
                   <td>
-                    <div class="d-flex align-items-center">
-                      <i class="bi bi-geo-alt text-muted me-2"></i>
+                    <div class="location-info">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
                       <span><?= esc($dorm->city) ?>, <?= esc($dorm->province) ?></span>
                     </div>
                   </td>
                   <td>
                     <?php if ($dorm->status == 'active'): ?>
-                      <div class="status-pill bg-success-soft text-success">
-                        <i class="bi bi-check-circle me-1"></i>Active
-                      </div>
+                      <span class="status-badge status-active">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        Active
+                      </span>
                     <?php else: ?>
-                      <div class="status-pill bg-danger-soft text-danger">
-                        <i class="bi bi-x-circle me-1"></i>Inactive
-                      </div>
+                      <span class="status-badge status-inactive">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="15" y1="9" x2="9" y2="15"></line>
+                          <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                        Inactive
+                      </span>
                     <?php endif; ?>
                   </td>
                   <td>
-                    <div class="d-flex align-items-center">
-                      <div class="availability-badge">
-                        <i class="bi bi-door-open me-2"></i>
-                        <span class="fw-medium"><?= esc($dorm->available_rooms) ?></span>
-                      </div>
+                    <div class="rooms-available">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 3h18v18H3zM9 3v18M15 3v18M3 9h18M3 15h18"></path>
+                      </svg>
+                      <span><?= esc($dorm->available_rooms) ?></span>
                     </div>
                   </td>
                   <td>
-                    <div class="action-buttons d-flex justify-content-end gap-2 pe-3">
-                      <a href="<?= ROOT ?>/mydorms/viewdorm/<?= $dorm->id ?>" class="btn btn-sm btn-light-orange"
-                        data-bs-toggle="tooltip" title="View Details">
-                        <i class="bi bi-eye"></i>
+                    <div class="action-buttons">
+                      <a href="<?= ROOT ?>/mydorms/viewdorm/<?= $dorm->id ?>" class="btn-action view"
+                        aria-label="View details">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
                       </a>
-                      <a href="<?= ROOT ?>/mydorms/edit/<?= $dorm->id ?>" class="btn btn-sm btn-light-blue"
-                        data-bs-toggle="tooltip" title="Edit Dorm">
-                        <i class="bi bi-pencil"></i>
+                      <a href="<?= ROOT ?>/mydorms/edit/<?= $dorm->id ?>" class="btn-action edit" aria-label="Edit dorm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                        </svg>
                       </a>
-                      <a href="javascript:void(0)" onclick="confirmDelete(<?= $dorm->id ?>)"
-                        class="btn btn-sm btn-light-red" data-bs-toggle="tooltip" title="Delete Dorm">
-                        <i class="bi bi-trash"></i>
+                      <a href="javascript:void(0)" onclick="confirmDelete(<?= $dorm->id ?>)" class="btn-action delete"
+                        aria-label="Delete dorm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="3 6 5 6 21 6"></polyline>
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
                       </a>
                     </div>
                   </td>
                 </tr>
               <?php endforeach; ?>
-            <?php else: ?>
-              <tr>
-                <td colspan="6">
-                  <div class="empty-state p-5 text-center">
-                    <div class="empty-state-icon bg-orange-soft rounded-circle mx-auto mb-3">
-                      <i class="bi bi-building text-orange"></i>
-                    </div>
-                    <h5 class="fw-medium mb-2">No Dorms Available</h5>
-                    <p class="text-muted mb-3">You haven't added any dorms to your listing yet.</p>
-                    <?php if (isset($_SESSION['USER']) && $_SESSION['USER']->role === 'dorm'): ?>
-                    <?php endif; ?>
-                  </div>
-                </td>
-              </tr>
-            <?php endif; ?>
-          </tbody>
-        </table>
-      </div>
-    </div>
+            </tbody>
+          </table>
 
-    <?php if (!empty($dorms)): ?>
-      <div class="card-footer bg-white py-3 px-4 d-flex justify-content-between align-items-center">
-        <div class="text-muted small">
-          <i class="bi bi-info-circle me-1"></i> Showing <?= count($dorms) ?> total dorm
-          propert<?= count($dorms) > 1 ? 'ies' : 'y' ?>
+          <div class="table-footer">
+            <div class="footer-info">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span>Showing <?= count($dorms) ?> total dorm propert<?= count($dorms) > 1 ? 'ies' : 'y' ?></span>
+            </div>
+            <div class="footer-actions">
+              <button type="button" class="btn-secondary" onclick="window.print()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                  <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
+                Print List
+              </button>
+            </div>
+          </div>
         </div>
-        <div>
-          <button type="button" class="btn btn-sm btn-light" onclick="window.print()">
-            <i class="bi bi-printer me-1"></i> Print List
-          </button>
+      <?php else: ?>
+        <div class="empty-state">
+          <div class="empty-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </div>
+          <h3>No Dorms Available</h3>
+          <p>You haven't added any dorms to your listing yet.</p>
+          <?php if (isset($_SESSION['USER']) && $_SESSION['USER']->role === 'dorm'): ?>
+            <a href="<?= ROOT ?>/mydorms/create" class="btn-create-empty">Add Your First Dorm</a>
+          <?php endif; ?>
         </div>
-      </div>
-    <?php endif; ?>
+      <?php endif; ?>
+    </div>
   </div>
 </div>
 
 <!-- Delete Confirmation Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content border-0 shadow">
-      <div class="modal-header border-0">
-        <h5 class="modal-title">Confirm Deletion</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3>Confirm Deletion</h3>
+      <button class="modal-close" id="closeModal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="warning-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+          <line x1="12" y1="9" x2="12" y2="13"></line>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
       </div>
-      <div class="modal-body text-center py-4">
-        <div class="mb-3">
-          <i class="bi bi-exclamation-triangle text-warning display-4"></i>
-        </div>
-        <h5 class="mb-2">Are you sure you want to delete this dorm?</h5>
-        <p class="text-muted">This action cannot be undone and all associated data will be permanently removed.</p>
-      </div>
-      <div class="modal-footer border-0">
-        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-        <a href="#" id="confirmDeleteBtn" class="btn btn-danger">Yes, Delete</a>
-      </div>
+      <h4>Are you sure you want to delete this dorm?</h4>
+      <p>This action cannot be undone and all associated data will be permanently removed.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" id="cancelDelete">Cancel</button>
+      <a href="#" id="confirmDeleteBtn" class="btn-delete">Yes, Delete</a>
     </div>
   </div>
 </div>
 
-<!-- Add Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
-<!-- Add custom CSS for orange theme and styling -->
 <style>
-  /* Typography Enhancements */
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-  }
-
-  /* Orange Theme Colors */
   :root {
-    --orange-primary: #FF7A00;
-    --orange-secondary: #FF9A3D;
-    --orange-light: #FFF0E0;
-    --blue-light: #E0F0FF;
-    --red-light: #FFE0E0;
+    --primary-color: #FF7A00;
+    --primary-light: #FFF4EA;
+    --primary-dark: #E05F00;
+    --success-color: #34D399;
+    --success-light: #D1FAE5;
+    --danger-color: #F87171;
+    --danger-light: #FEE2E2;
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-300: #D1D5DB;
+    --gray-400: #9CA3AF;
+    --gray-500: #6B7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-color: #3B82F6;
+    --blue-light: #DBEAFE;
+    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+    --border-radius: 16px;
+    --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
 
-  /* Custom Button Styles */
-  .btn-orange {
-    background-color: var(--orange-primary);
-    color: white;
-    border: none;
-    font-weight: 500;
-    border-radius: 6px;
-    transition: all 0.3s;
+  /* Base Styles */
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--gray-50);
+    color: var(--gray-700);
   }
 
-  .btn-orange:hover,
-  .btn-orange:focus {
-    background-color: var(--orange-secondary);
-    color: white;
-    box-shadow: 0 5px 15px rgba(255, 122, 0, 0.15);
+  .dashboard-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 150px;
+    padding-bottom: 100px;
   }
 
-  .btn-light-orange {
-    background-color: var(--orange-light);
-    color: var(--orange-primary);
-    border: none;
-    transition: all 0.2s;
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
-  .btn-light-orange:hover {
-    background-color: var(--orange-primary);
-    color: white;
+  /* Header */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
-  .btn-light-blue {
-    background-color: var(--blue-light);
-    color: #0d6efd;
-    border: none;
+  .page-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin: 0;
+    line-height: 1.2;
   }
 
-  .btn-light-blue:hover {
-    background-color: #0d6efd;
-    color: white;
+  /* Cards */
+  .data-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
   }
 
-  .btn-light-red {
-    background-color: var(--red-light);
-    color: #dc3545;
-    border: none;
+  /* Table */
+  .table-container {
+    overflow-x: auto;
   }
 
-  .btn-light-red:hover {
-    background-color: #dc3545;
-    color: white;
+  .data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
   }
 
-  /* Custom Card Styling */
-  .card {
-    border-radius: 10px;
-  }
-
-  .card-header {
-    background-color: #f8f9fa;
-  }
-
-  /* Table Styling */
-  .table th {
+  .data-table th {
+    padding: 1rem;
+    text-align: left;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
-    color: #495057;
+    letter-spacing: 0.05em;
+    color: var(--gray-500);
+    background-color: #FAFAFA;
+    border-bottom: 1px solid var(--gray-200);
   }
 
-  .table td {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    font-size: 0.95rem;
+  .data-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray-200);
   }
 
-  /* Status Pills */
-  .status-pill {
-    display: inline-flex;
+  .data-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .data-table tr:hover {
+    background-color: var(--primary-light);
+  }
+
+  /* Card Header */
+  .card-header-custom {
+    padding: 1rem;
+    background-color: white;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .header-icon {
+    display: flex;
     align-items: center;
-    padding: 0.5rem 0.875rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 500;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
   }
 
-  .bg-success-soft {
-    background-color: rgba(25, 135, 84, 0.15);
-  }
-
-  .bg-danger-soft {
-    background-color: rgba(220, 53, 69, 0.15);
-  }
-
-  /* Availability Badge */
-  .availability-badge {
-    display: inline-flex;
+  /* Dorm Styling */
+  .user-info {
+    display: flex;
     align-items: center;
-    background-color: #f8f9fa;
-    padding: 0.5rem 0.875rem;
-    border-radius: 6px;
-    font-size: 0.875rem;
+    gap: 0.875rem;
   }
 
-  /* Avatar Style */
-  .avatar-sm {
-    width: 36px;
-    height: 36px;
-  }
-
-  /* Custom Background Colors */
-  .bg-orange-soft {
-    background-color: var(--orange-light);
-  }
-
-  .bg-light-orange {
-    background-color: rgba(255, 122, 0, 0.05);
-  }
-
-  /* Text Colors */
-  .text-orange {
-    color: var(--orange-primary) !important;
-  }
-
-  /* Dashboard Title */
-  .dashboard-title {
-    letter-spacing: -0.02em;
-  }
-
-  /* Empty State */
-  .empty-state-icon {
-    width: 70px;
-    height: 70px;
+  .dorm-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.75rem;
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.125rem;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary-light);
   }
 
-  /* Add more professional spacing */
-  .dashboard-header {
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  .user-name {
+    font-weight: 600;
+    color: var(--gray-900);
+  }
+
+  /* Location display */
+  .location-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray-500);
+  }
+
+  .location-info svg {
+    color: var(--gray-400);
+  }
+
+  /* Status badges */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .status-active {
+    background-color: var(--success-light);
+    color: var(--success-color);
+  }
+
+  .status-inactive {
+    background-color: var(--danger-light);
+    color: var(--danger-color);
+  }
+
+  /* Rooms available styling */
+  .rooms-available {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    background-color: var(--gray-100);
+    border-radius: 8px;
+    color: var(--gray-700);
+    font-weight: 500;
+    width: fit-content;
+  }
+
+  /* Action buttons */
+  .action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+
+  .btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--gray-500);
+    background-color: var(--gray-100);
+    text-decoration: none;
+  }
+
+  .btn-action.view:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+  }
+
+  .btn-action.edit:hover {
+    background-color: var(--blue-light);
+    color: var(--blue-color);
+  }
+
+  .btn-action.delete:hover {
+    background-color: var(--danger-light);
+    color: var(--danger-color);
+  }
+
+  /* Buttons */
+  .btn-create {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(255, 122, 0, 0.3);
+  }
+
+  .btn-create:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 122, 0, 0.4);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--gray-100);
+    color: var(--gray-700);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--gray-200);
+  }
+
+  /* Table footer */
+  .table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: white;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  .footer-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray-500);
+    font-size: 0.875rem;
+  }
+
+  /* Empty state */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem;
+    text-align: center;
+  }
+
+  .empty-icon {
+    color: var(--gray-300);
+    margin-bottom: 1rem;
+  }
+
+  .empty-state h3 {
+    margin: 0.5rem 0;
+    color: var(--gray-700);
+    font-weight: 600;
+  }
+
+  .empty-state p {
+    color: var(--gray-500);
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-create-empty {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .btn-create-empty:hover {
+    background-color: var(--primary-dark);
+  }
+
+  /* Modal styling */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-overlay.active {
+    display: flex;
+  }
+
+  .modal-container {
+    background-color: white;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+  }
+
+  .modal-header {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .modal-header h3 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--gray-900);
+  }
+
+  .modal-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-500);
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+
+  .modal-close:hover {
+    background-color: var(--gray-100);
+    color: var(--gray-900);
+  }
+
+  .modal-body {
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .warning-icon {
+    color: #FBBF24;
+    margin-bottom: 1rem;
+  }
+
+  .modal-body h4 {
+    margin: 0 0 0.75rem 0;
+    color: var(--gray-900);
+    font-weight: 600;
+  }
+
+  .modal-body p {
+    margin: 0;
+    color: var(--gray-500);
+  }
+
+  .modal-footer {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  .btn-cancel {
+    padding: 0.5rem 1rem;
+    background-color: var(--gray-100);
+    color: var(--gray-700);
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-cancel:hover {
+    background-color: var(--gray-200);
+  }
+
+  .btn-delete {
+    padding: 0.5rem 1rem;
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .btn-delete:hover {
+    background-color: #EF4444;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .page-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .header-actions {
+      width: 100%;
+    }
+
+    .btn-create {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .table-footer {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-actions {
+      width: 100%;
+    }
+
+    .footer-actions button {
+      width: 100%;
+      justify-content: center;
+    }
   }
 </style>
 
-<!-- JavaScript for Delete Confirmation Modal -->
 <script>
-  function confirmDelete(dormId) {
-    const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
-    document.getElementById('confirmDeleteBtn').href = `<?= ROOT ?>/mydorms/delete/${dormId}`;
-    modal.show();
-  }
-
-  // Initialize tooltips
+  // JavaScript for Delete Confirmation Modal
   document.addEventListener('DOMContentLoaded', function () {
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl, {
-        boundary: document.body
-      });
+    const modal = document.getElementById('deleteModal');
+    const closeButton = document.getElementById('closeModal');
+    const cancelButton = document.getElementById('cancelDelete');
+
+    function showModal() {
+      modal.classList.add('active');
+    }
+
+    function hideModal() {
+      modal.classList.remove('active');
+    }
+
+    window.confirmDelete = function (dormId) {
+      document.getElementById('confirmDeleteBtn').href = `<?= ROOT ?>/dorms/delete/${dormId}`;
+      showModal();
+    }
+
+    closeButton.addEventListener('click', hideModal);
+    cancelButton.addEventListener('click', hideModal);
+
+    // Close modal when clicking outside the modal content
+    modal.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        hideModal();
+      }
     });
   });
 </script>

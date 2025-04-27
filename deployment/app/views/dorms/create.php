@@ -9,7 +9,7 @@
           <i class="bi bi-building-add text-orange"></i>
         </div>
         <div>
-          <h2 class="fw-bold mb-0">Add New Dorm</h2>
+          <h2 class="fw-bold mb-0">Add New Dormss</h2>
           <p class="text-muted mb-0">Enter your dorm details to create a new listing</p>
         </div>
       </div>

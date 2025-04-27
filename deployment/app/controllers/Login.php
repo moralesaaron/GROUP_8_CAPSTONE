@@ -10,13 +10,13 @@ class Login extends Controller
 
       switch ($role) {
         case 'admin':
-          redirect('admin/dashboard');
+          redirect('AdminDashboard');
           break;
         case 'dorm':
           redirect('dorm/dashboard');
           break;
         case 'user':
-          redirect('explore');
+          redirect('Explore');
           break;
         default:
           Auth::logout(); // just in case
@@ -78,13 +78,13 @@ class Login extends Controller
             // 🔁 Redirect based on role
             switch ($row->role) {
               case 'admin':
-                redirect('admin/dashboard');
+                redirect('AdminDashboard');
                 break;
               case 'dorm':
                 redirect('DormDashboard/index');
                 break;
               case 'user':
-                redirect('explore');
+                redirect('Explore');
                 break;
               default:
                 $errors[] = 'Unrecognized role. Contact support.';

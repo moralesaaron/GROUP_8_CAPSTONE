@@ -1,7 +1,7 @@
 <?php include __DIR__ . '/../partials/ownerheader.php'; ?>
 
 <div class="container my-5">
-  <h2 class="mb-4">Add New Dorm</h2>
+  <h2 class="mb-4">Add New Dormsss</h2>
 
   <?php if (!empty($errors)): ?>
     <div class="alert alert-danger">

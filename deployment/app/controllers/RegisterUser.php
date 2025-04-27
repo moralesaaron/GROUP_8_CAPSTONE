@@ -31,26 +31,22 @@ class RegisterUser extends Controller
         $errors[] = 'This email is already registered. Please use a different one.';
       }
 
-      // Handle ID Image Upload
+      // Handle ID Image Upload (optional now)
       if (!empty($_FILES['id_image']['name'])) {
         $allowed = ['image/jpeg', 'image/png', 'image/jpg'];
         if ($_FILES['id_image']['error'] === 0 && in_array($_FILES['id_image']['type'], $allowed)) {
           $folder = 'public/assets/images/';
-          if (!file_exists($folder)) mkdir($folder, 0777, true);
+          if (!file_exists($folder))
+            mkdir($folder, 0777, true);
 
           $filename = time() . '_' . $_FILES['id_image']['name'];
           $destination = $folder . $filename;
 
           if (move_uploaded_file($_FILES['id_image']['tmp_name'], $destination)) {
             $_POST['id_image'] = $filename;
-          } else {
-            $errors[] = "ID image upload failed. Please try again.";
           }
-        } else {
-          $errors[] = "Invalid ID image file type.";
         }
-      } else {
-        $errors[] = "Valid ID image is required.";
+        // If upload fails or invalid type, just ignore; no error pushed
       }
 
       // Handle Profile Image Upload or Default
@@ -58,7 +54,8 @@ class RegisterUser extends Controller
         $allowed = ['image/jpeg', 'image/png', 'image/jpg'];
         if ($_FILES['image']['error'] === 0 && in_array($_FILES['image']['type'], $allowed)) {
           $folder = 'public/assets/images/';
-          if (!file_exists($folder)) mkdir($folder, 0777, true);
+          if (!file_exists($folder))
+            mkdir($folder, 0777, true);
 
           $filename = time() . '_' . $_FILES['image']['name'];
           $destination = $folder . $filename;
